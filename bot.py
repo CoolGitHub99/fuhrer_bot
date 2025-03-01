@@ -9,6 +9,8 @@ from dotenv import load_dotenv  # Import dotenv
 load_dotenv()
 
 TOKEN = os.getenv("DISCORD_BOT_TOKEN")  # Get the token from the .env file
+if not TOKEN:
+    print("Error: DISCORD_BOT_TOKEN not found in the .env file!")
 
 intents = discord.Intents.default()
 intents.messages = True
