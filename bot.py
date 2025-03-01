@@ -4,6 +4,8 @@ import os
 from discord.ext import commands
 from discord import app_commands
 from dotenv import load_dotenv  # Import dotenv
+from flask import Flask
+import threading
 
 # Load environment variables
 load_dotenv()
@@ -19,14 +21,22 @@ intents.guilds = True
 intents.members = True
 intents.message_content = True  # Add this line to enable the message content intent
 
-
 bot = commands.Bot(command_prefix="!", intents=intents)
 tree = bot.tree
 
-@bot.event
-async def on_ready():
-    await bot.tree.sync()
-    print(f"Logged in as {bot.user.name}")
+# Create a Flask app to simulate HTTP traffic (needed for Render)
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Bot is running"
+
+def run_flask():
+    app.run(host="0.0.0.0", port=8000)
+
+# Start the Flask server in a separate thread
+thread = threading.Thread(target=run_flask)
+thread.start()
 
 # List of random images
 FUHRER_IMAGES = [
@@ -51,6 +61,7 @@ FUHRER_IMAGES = [
 ]
 
 # Event: Bot ready
+@bot.event
 async def on_ready():
     try:
         await bot.tree.sync()  # Force sync commands
@@ -120,5 +131,5 @@ async def fuhrerrole(interaction: discord.Interaction, member: discord.Member, r
     except Exception:
         await interaction.response.send_message("⚠️ An error occurred while changing the role.", ephemeral=True)
 
-
+# Run the bot
 bot.run(TOKEN)
