@@ -3,7 +3,7 @@ import random
 from discord.ext import commands
 from discord import app_commands
 
-TOKEN = "OTY3NTM1NTIzMjE4NDc3MDk2.GNxqxZ.77bXVmacTBJub4hn684BZq1-08Y3EsEMCNepQo"  # Replace with your bot token
+TOKEN = "OTY3NTM1NTIzMjE4NDc3MDk2.Gq6GUu.GP2HBWo4UI_pnG6UEIQgshniDSu_pssTyUkUu0"  # Replace with your bot token
 
 intents = discord.Intents.default()
 intents.messages = True
