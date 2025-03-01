@@ -14,6 +14,8 @@ intents = discord.Intents.default()
 intents.messages = True
 intents.guilds = True
 intents.members = True
+intents.message_content = True  # Add this line to enable the message content intent
+
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 tree = bot.tree
