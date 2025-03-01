@@ -21,7 +21,7 @@ intents.guilds = True
 intents.members = True
 intents.message_content = True  # Add this line to enable the message content intent
 
-bot = commands.Bot(command_prefix="!", intents=intents)
+bot = commands.Bot(command_prefix="/", intents=intents)
 tree = bot.tree
 
 # Create a Flask app to simulate HTTP traffic (needed for Render)
@@ -60,6 +60,8 @@ FUHRER_IMAGES = [
     'https://media.discordapp.net/attachments/1342337498491392093/1344886518493478982/image.png?ex=67c28aac&is=67c1392c&hm=ec6a0ec902569ff8b4a77db6baa010d2455f2b62f5383272d05fdc143a5620c6&=&format=webp&quality=lossless'
 ]
 
+
+
 # Event: Bot ready
 @bot.event
 async def on_ready():
@@ -69,6 +71,18 @@ async def on_ready():
     except Exception as e:
         print(f"Error syncing commands: {e}")
 
+#syncing
+@bot.command()
+async def sync(ctx):
+    await bot.tree.sync()
+    await ctx.send("Commands have been synced!")
+
+@bot.command()
+async def clearsync(ctx):
+    await bot.tree.clear_commands(guild=None)  # Clears global commands
+    await bot.tree.sync()
+    await ctx.send("All global commands have been removed.")
+
 # /fuhrer command - Sends a random image
 @tree.command(name="fuhrer", description="Sends a random Fuhrer image")
 async def fuhrer(interaction: discord.Interaction):
@@ -77,6 +91,8 @@ async def fuhrer(interaction: discord.Interaction):
         await interaction.response.send_message(image)
     except Exception:
         await interaction.response.send_message("An error occurred while sending the image.", ephemeral=True)
+
+# /fuhrergamble
 
 # /fuhrerban command - Bans a user
 @tree.command(name="fuhrerban", description="Bans a user from the server")
