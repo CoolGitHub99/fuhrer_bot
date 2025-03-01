@@ -79,9 +79,21 @@ async def sync(ctx):
 
 @bot.command()
 async def clearsync(ctx):
-    await bot.tree.clear_commands(guild=None)  # Clears global commands
-    await bot.tree.sync()
-    await ctx.send("All global commands have been removed.")
+    try:
+        await bot.tree.clear_commands(guild=None)  # Clear global commands
+        await bot.tree.sync()  # Resync to reflect the changes
+        await ctx.send("✅ All global commands have been removed.")
+    except Exception as e:
+        await ctx.send(f"❌ Failed to clear commands: {e}")
+
+@bot.command()
+async def listcommands(ctx):
+    commands = [cmd.name for cmd in bot.tree.get_commands()]
+    if commands:
+        await ctx.send(f"📜 Current commands: {', '.join(commands)}")
+    else:
+        await ctx.send("🚫 No commands found!")
+
 
 # /fuhrer command - Sends a random image
 @tree.command(name="fuhrer", description="Sends a random Fuhrer image")
