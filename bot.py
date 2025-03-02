@@ -1,6 +1,7 @@
 import discord
 import random
 import os
+import json
 from discord.ext import commands
 from discord import app_commands
 from dotenv import load_dotenv  # Import dotenv
@@ -94,6 +95,50 @@ async def listcommands(ctx):
     else:
         await ctx.send("🚫 No commands found!")
 
+#Commands
+
+#Data
+class MyCog(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+        self.file_path = "data.json"
+        self.member_values = self.load_data()
+    
+    def load_data(self):
+        """Load data from the JSON file."""
+        try:
+            with open(self.file_path, "r") as f:
+                return json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            return {}  # Return an empty dictionary if no data is found or the file is empty
+        
+    def save_data(self):
+        """Save data to the JSON file."""
+        with open(self.file_path, "w") as f:
+            json.dump(self.member_values, f, indent=4)
+
+    def save_number(self, member, value):
+        """Save a number for a specific member."""
+        self.member_values[str(member.id)] = value
+        self.save_data()
+
+    def get_number(self, member):
+        """Retrieve the saved number for a specific member."""
+        return self.member_values.get(str(member.id), None)  # Return None if no value is found
+
+
+# To load the cog
+async def setup(bot):
+    await bot.add_cog(MyCog(bot))
+
+my_cog = bot.get_cog('MyCog')
+
+#See how much cash you have
+@tree.command(name="fuhrer_cash", description="Check your current balance")
+async def fuhrer_cash(interaction: discord.Interaction):
+    balance = my_cog.get_number(interaction.user)
+    await interaction.response.send_message(f"💰 Your current balance is {balance} coins.")
+
 
 # /fuhrer command - Sends a random image
 @tree.command(name="fuhrer", description="Sends a random Fuhrer image")
@@ -105,6 +150,68 @@ async def fuhrer(interaction: discord.Interaction):
         await interaction.response.send_message("An error occurred while sending the image.", ephemeral=True)
 
 # /fuhrergamble
+@tree.command(name="fuhrergamble", description="Play a game of Roulette or Blackjack")
+@app_commands.describe(bet="The amount you want to bet", game="The game to play: B: Blackjack, R: Roulette")
+async def fuhrergamble(interaction: discord.Interaction, bet: int, game: str):
+    user_balance = my_cog.get_number(interaction.user)
+
+    # Check if the user has enough balance
+    if bet > user_balance:
+        await interaction.response.send_message("❌ You do not have enough coins to make this bet.", ephemeral=True)
+        return
+
+    if game.lower() == "r":
+        result = random.randint(0, 36)  # Roulette wheel numbers (0-36)
+        color = random.choice(["red", "black", "green"])  # Random color for the result
+
+        # Let's assume the player is betting on color for simplicity
+        user_choice = "red"  # Replace this with user's actual choice
+        win = (color == user_choice)
+
+        if win:
+            new_balance = user_balance + bet  # Win: add bet to balance
+            result_message = f"🎰 The roulette wheel landed on {color} {result}. You won! Your new balance is {new_balance} coins."
+        else:
+            new_balance = user_balance - bet  # Lose: subtract bet from balance
+            result_message = f"🎰 The roulette wheel landed on {color} {result}. You lost! Your new balance is {new_balance} coins."
+
+        my_cog.save_number(interaction.user, new_balance)
+        await interaction.response.send_message(result_message)
+
+    elif game.lower() == "b":
+        player_hand = [random.randint(2, 11), random.randint(2, 11)]  # Two cards for the player
+        dealer_hand = [random.randint(2, 11), random.randint(2, 11)]  # Two cards for the dealer
+        player_total = sum(player_hand)
+        dealer_total = sum(dealer_hand)
+
+        # Simplified Blackjack logic
+        while player_total < 21:  # Player can keep drawing cards
+            player_hand.append(random.randint(2, 11))
+            player_total = sum(player_hand)
+            if player_total > 21:
+                break
+
+        while dealer_total < 17:  # Dealer has to draw until total is at least 17
+            dealer_hand.append(random.randint(2, 11))
+            dealer_total = sum(dealer_hand)
+
+        # Compare totals
+        if player_total > 21:
+            result_message = f"🃏 You busted with {player_total}! You lost your bet. Your new balance is {user_balance - bet} coins."
+            new_balance = user_balance - bet
+        elif dealer_total > 21 or player_total > dealer_total:
+            result_message = f"🃏 You won with {player_total} against the dealer's {dealer_total}! Your new balance is {user_balance + bet} coins."
+            new_balance = user_balance + bet
+        elif player_total < dealer_total:
+            result_message = f"🃏 You lost with {player_total} against the dealer's {dealer_total}. Your new balance is {user_balance - bet} coins."
+            new_balance = user_balance - bet
+        else:
+            result_message = f"🃏 It's a tie with {player_total} against the dealer's {dealer_total}. Your balance remains {user_balance} coins."
+            new_balance = user_balance
+
+        my_cog.save_number(interaction.user, new_balance)
+        await interaction.response.send_message(result_message)
+
 
 # /fuhrerban command - Bans a user
 @tree.command(name="fuhrerban", description="Bans a user from the server")
