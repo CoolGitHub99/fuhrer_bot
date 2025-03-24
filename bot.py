@@ -3,6 +3,11 @@ import discord
 from discord import app_commands
 import random
 
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
 # List of random images
 FUHRER_IMAGES = [
     'https://cdn.discordapp.com/attachments/1329672215871885385/1344097518685913098/IMG_1888.jpg?ex=67c24edc&is=67c0fd5c&hm=49441768ec2fef65341cb9ef5c4f5178653188a970e23d76d314492e26329138&', 
@@ -48,4 +53,4 @@ async def on_ready():
     print(f'Logged in as {client.user}')
 
 # Run the bot using the token from environment variables
-client.run(os.environ.get('DISCORD_BOT_TOKEN'))
+client.run(os.getenv('DISCORD_BOT_TOKEN'))
