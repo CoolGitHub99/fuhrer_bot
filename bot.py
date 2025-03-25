@@ -85,6 +85,13 @@ class MoneyManager:
 
 Money = MoneyManager()
 
+@tree.command(name="fuhrermoney", description="The amount of money a user has")
+@app_commands.describe(
+    member="The memebers money u want to see"
+)
+async def fuhrermoney(interaction: discord.Interaction, member: discord.Member):
+    await interaction.response.send_message(f"User {member.mention} has: {Money.get_balance(member.id)}")
+
 @tree.command(name="fuhrerrole", description="Modify a user's role")
 @app_commands.describe(
     member="The user whose role you want to change",
@@ -187,12 +194,6 @@ async def fuhrerroulletewheel(
         color_c = 'black'
     else:
         color_c = 'green'  # for zero or any unexpected number
-
-    # Debug print
-    print(f"Generated Number: {number_c}")
-    print(f"Determined Color: {color_c}")
-    print(f"Red Numbers: {red_numbers}")
-    print(f"Black Numbers: {black_numbers}")
 
     # Create color display
     color_print = 'black 👨🏿' if color_c == 'black' else 'red 👺' if color_c == 'red' else 'green 🟢'
