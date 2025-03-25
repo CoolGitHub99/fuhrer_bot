@@ -153,33 +153,38 @@ class BetNumber(int):
     number="1-36, The number you'd like to bet on, 35:1 pay (optional)"
 )
 async def fuhrerroulletewheel(interaction: discord.Interaction, amount: int, color: BetColor, number: BetNumber):
+    # Validate bet amount
     if amount <= 0:
-        await interaction.response.send_message("Bet amount must be positive intenigger.", ephemeral=True)
+        await interaction.response.send_message("Bet amount must be a positive integer.", ephemeral=True)
         return
     
+    # Validate color and number combination
     color = color.lower()
-
     if (color == 'black' and number % 2 != 0) or (color == 'red' and number % 2 == 0):
-        await interaction.response.send_message("Red color must be odd number/Black color must be even number.", ephemeral=True)
+        await interaction.response.send_message("Red color must be on odd numbers / Black color must be on even numbers.", ephemeral=True)
         return
     
-    number_c = random.randint(1,36)
+    # Generate random spin
+    number_c = random.randint(1, 36)
     color_c = 'red' if number_c % 2 != 0 else 'black'
 
-    await interaction.response.send_message("Color: " + color_c + "Number: " + str(number_c), ephemeral=True)
+    # Initial response with spin results
+    await interaction.response.send_message(f"Spin result - Color: {color_c}, Number: {number_c}", ephemeral=True)
 
-    if not number and color_c == color:
+    # Determine winnings
+    if color_c == color and number is None:
+        # Color-only bet wins
         Money.update_balance(interaction.user.id, amount)
-        await interaction.response.send_message("Your color was correct! Your new balance is: " + str(Money.get_balance(interaction.user.id)), ephemeral=True)
-        return
+        await interaction.followup.send(f"Your color was correct! You won {amount} coins. New balance: {Money.get_balance(interaction.user.id)}")
     elif number == number_c and color == color_c:
-        Money.update_balance(interaction.user.id, amount*35)
-        await interaction.response.send_message("Your color and number was correct! Your new balance is: " + str(Money.get_balance(interaction.user.id)), ephemeral=True)
-        return
+        # Exact number and color match
+        winnings = amount * 35
+        Money.update_balance(interaction.user.id, winnings)
+        await interaction.followup.send(f"JACKPOT! Your color and number were correct! You won {winnings} coins. New balance: {Money.get_balance(interaction.user.id)}")
     else:
+        # Lost bet
         Money.update_balance(interaction.user.id, -amount)
-        await interaction.response.send_message("Your bet was incorrect. Your new balance is: " + str(Money.get_balance(interaction.user.id)), ephemeral=True)
-        return
+        await interaction.followup.send(f"Your bet was incorrect. You lost {amount} coins. New balance: {Money.get_balance(interaction.user.id)}")
 
 
 
