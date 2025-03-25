@@ -39,8 +39,9 @@ tree = app_commands.CommandTree(client)
 #Money
 
 class MoneyManager:
-    def __init__(self, filename='money.txt'):
+    def __init__(self, filename='money.txt', default_balance=200):
         self.filename = filename
+        self.default_balance = default_balance
         self.users = self.load_users()
 
     def load_users(self):
@@ -55,17 +56,25 @@ class MoneyManager:
         except (json.JSONDecodeError, FileNotFoundError):
             return {}
 
-    def add_user(self, user_id, initial_balance=100):
-        self.users[str(user_id)] = initial_balance
+    def add_user(self, user_id):
+        self.users[str(user_id)] = self.default_balance
         self.save_users()
 
     def get_balance(self, user_id):
-        return self.users.get(str(user_id), 0)
+        return self.users.get(str(user_id), self.default_balance)
 
     def update_balance(self, user_id, amount):
         user_id = str(user_id)
-        current_balance = self.users.get(user_id, 0)
+
+        if user_id not in self.users:
+            self.add_user(user_id)
+        
+        current_balance = self.users[user_id]
         new_balance = current_balance + amount
+
+        if new_balance <= 0:
+            new_balance = self.default_balance
+        
         self.users[user_id] = new_balance
         self.save_users()
         return new_balance
@@ -153,7 +162,7 @@ async def fuhrerroulletewheel(
     
     # Check if user has enough balance
     if bet > Money.get_balance(interaction.user.id):
-         await interaction.response.send_message("You don't have enough coins for this bet! ❌", ephemeral=True)
+         await interaction.response.send_message(f"You don't have enough coins for this bet! ❌ You Have: {Money.get_balance(interaction.user.id)}" , ephemeral=True)
          return
     
     # Normalize color
