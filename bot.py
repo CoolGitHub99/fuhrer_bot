@@ -151,44 +151,45 @@ async def fuhrer(interaction: discord.Interaction):
 @tree.command(name="fuhrerroulletewheel", description="Bet on roulette")
 async def fuhrerroulletewheel(
     interaction: discord.Interaction, 
-    bet: int, 
-    color: str, 
+    bet: int,
+    color: str,
     number: int = None
 ):
+    # Predefined roulette colors
+    red_numbers = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36]
+    black_numbers = [2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35]
+
     # Validate bet amount
     if bet <= 0:
         await interaction.response.send_message("Bet amount must be a positive integer. ❌", ephemeral=True)
-        return
-    
+        return 
+
     # Check if user has enough balance
     if bet > Money.get_balance(interaction.user.id):
-         await interaction.response.send_message(f"You don't have enough coins for this bet! ❌ You Have: {Money.get_balance(interaction.user.id)}" , ephemeral=True)
-         return
-    
+        await interaction.response.send_message(f"You don't have enough coins for this bet! ❌ You Have: {Money.get_balance(interaction.user.id)}" , ephemeral=True)
+        return 
+
     # Normalize color
     color = color.lower()
-    
+
     # Validate color
     if color not in ['red', 'black']:
         await interaction.response.send_message("Color must be either 'red' or 'black'. ❌", ephemeral=True)
-        return
-    
-    # Validate number if provided
-    if number is not None:
-        if number < 1 or number > 36:
-            await interaction.response.send_message("Number must be between 1 and 36. ❌", ephemeral=True)
-            return
-        
-        # Additional color-number consistency check
-        if (color == 'black' and number % 2 != 0) or (color == 'red' and number % 2 == 0):
-            await interaction.response.send_message("Red color must be on odd numbers / Black color must be on even numbers. ❌", ephemeral=True)
-            return
-    
+        return 
+
     # Generate random spin
     number_c = random.randint(1, 36)
-    color_c = 'red' if number_c % 2 != 0 else 'black'
 
-    color_print = 'black 👨🏿' if number_c == 'black' else 'red 👺'
+    # Determine color based on number
+    if number_c in red_numbers:
+        color_c = 'red'
+    elif number_c in black_numbers:
+        color_c = 'black'
+    else:
+        color_c = 'green'  # for zero or any unexpected number
+
+    # Create color display
+    color_print = 'black 👨🏿' if color_c == 'black' else 'red 👺' if color_c == 'red' else 'green 🟢'
 
     # Initial response with spin results
     await interaction.response.send_message(f"Spin result - Color: {color_print}, Number: {number_c}")
@@ -205,6 +206,11 @@ async def fuhrerroulletewheel(
         
         # Color and number bet
         else:
+            # Validate number if provided
+            if number < 1 or number > 36:
+                await interaction.followup.send("Number must be between 1 and 36. ❌", ephemeral=True)
+                return
+
             if number == number_c and color == color_c:
                 winnings = bet * 35
                 Money.update_balance(interaction.user.id, winnings)
@@ -212,7 +218,7 @@ async def fuhrerroulletewheel(
             else:
                 Money.update_balance(interaction.user.id, -bet)
                 await interaction.followup.send(f"Your bet was incorrect. ❌ You lost {bet} coins. New balance: {Money.get_balance(interaction.user.id)}")
-    
+
     except Exception as e:
         await interaction.followup.send(f"An error occurred: {str(e)}", ephemeral=True)
 
