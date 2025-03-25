@@ -207,7 +207,9 @@ async def fuhrerroulletewheel(
 #Run Bot
 @client.event
 async def on_ready():
-    await tree.sync()
     print(f'Logged in as {client.user}')
+    await tree.sync()
+    print(f'Commands synced')
+
 
 client.run(os.getenv('DISCORD_BOT_TOKEN'))
