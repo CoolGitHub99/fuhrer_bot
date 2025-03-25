@@ -188,6 +188,12 @@ async def fuhrerroulletewheel(
     else:
         color_c = 'green'  # for zero or any unexpected number
 
+    # Debug print
+    print(f"Generated Number: {number_c}")
+    print(f"Determined Color: {color_c}")
+    print(f"Red Numbers: {red_numbers}")
+    print(f"Black Numbers: {black_numbers}")
+
     # Create color display
     color_print = 'black 👨🏿' if color_c == 'black' else 'red 👺' if color_c == 'red' else 'green 🟢'
 
