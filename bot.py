@@ -89,7 +89,7 @@ async def fuhrerrole(interaction: discord.Interaction, member: discord.Member, r
         
         await member.add_roles(role)
         
-        await interaction.response.send_message(f"Removed previous roles and assigned {role.mention} to {member.mention}.")
+        await interaction.response.send_message(f"Roled {role.mention} to {member.mention}.")
     except discord.Forbidden:
         await interaction.response.send_message("I don't have permission to manage roles.", ephemeral=True)
     except Exception as e:
