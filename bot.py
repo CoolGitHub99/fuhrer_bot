@@ -140,8 +140,9 @@ async def fuhrer(interaction: discord.Interaction):
 
 @tree.command(name="test", description="Test command")
 async def test(interaction: discord.Interaction):
-    await interaction.response.send_message(random.choice({'NIGGER', 'Sieg Hail', 'I dont like jews', 'I am racist'}), ephemeral=True)
+    await interaction.response.send_message(random.choice(['NIGGER', 'Sieg Hail', 'I dont like jews', 'I am racist']), ephemeral=True)
 
+#gambling yummy no addiction i can stop whenever i want
 class BetColor(str):
     COLORS = ['red', 'black']
 
@@ -157,50 +158,43 @@ async def fuhrerroulletewheel(
     color: str, 
     number: int = None
 ):
-    # Validate inputs
     if amount <= 0:
         await interaction.response.send_message("Bet amount must be a positive integer.", ephemeral=True)
         return
     
-    # Normalize color
+    if amount > Money.get_balance(interaction.user.id):
+         await interaction.response.send_message("You're too poor for this!", ephemeral=True)
+         return
+    
     color = color.lower()
     
-    # Validate color
     if color not in ['red', 'black']:
         await interaction.response.send_message("Color must be either 'red' or 'black'.", ephemeral=True)
         return
     
-    # Validate number if provided
     if number is not None and (number < 1 or number > 36):
         await interaction.response.send_message("Number must be between 1 and 36.", ephemeral=True)
         return
     
-    # Color and number validation
     if (color == 'black' and (number is not None and number % 2 != 0)) or \
        (color == 'red' and (number is not None and number % 2 == 0)):
         await interaction.response.send_message("Red color must be on odd numbers / Black color must be on even numbers.", ephemeral=True)
         return
     
-    # Generate random spin
     number_c = random.randint(1, 36)
     color_c = 'red' if number_c % 2 != 0 else 'black'
 
-    # Initial response with spin results
     await interaction.response.send_message(f"Spin result - Color: {color_c}, Number: {number_c}", ephemeral=True)
 
-    # Determine winnings
     try:
         if color_c == color and number is None:
-            # Color-only bet wins
             Money.update_balance(interaction.user.id, amount)
             await interaction.followup.send(f"Your color was correct! You won {amount} coins. New balance: {Money.get_balance(interaction.user.id)}")
         elif number == number_c and color == color_c:
-            # Exact number and color match
             winnings = amount * 35
             Money.update_balance(interaction.user.id, winnings)
             await interaction.followup.send(f"JACKPOT! Your color and number were correct! You won {winnings} coins. New balance: {Money.get_balance(interaction.user.id)}")
         else:
-            # Lost bet
             Money.update_balance(interaction.user.id, -amount)
             await interaction.followup.send(f"Your bet was incorrect. You lost {amount} coins. New balance: {Money.get_balance(interaction.user.id)}")
     except Exception as e:
