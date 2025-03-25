@@ -245,11 +245,11 @@ async def fuhrerslotmachine(interaction: discord.Interaction, bet: int):
     await interaction.response.send_message(f"The slots were {slot1}{slot2}{slot3}!")
 
     if slot1 == slot2 and slot2 == slot3:
-        winnings = bet * 10
+        winnings = bet * 15
         Money.update_balance(interaction.user.id, winnings)
         await interaction.followup.send(f"JACKPOT! You got all three slots! ✅✅✅ You won {winnings} dollars. New balance: {Money.get_balance(interaction.user.id)}")
     elif slot1 == slot2 or slot2 == slot3 or slot1 == slot3:
-        winnings = bet * 2
+        winnings = bet * 3
         Money.update_balance(interaction.user.id, winnings)
         await interaction.followup.send(f"Two slots were correct! ✅ You won {winnings} dollars. New balance: {Money.get_balance(interaction.user.id)}")
     else:
