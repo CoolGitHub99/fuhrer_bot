@@ -74,6 +74,8 @@ class MoneyManager:
         with open(self.filename, 'w') as f:
             json.dump(self.users, f, indent=4)
 
+Money = MoneyManager()
+
 @tree.command(name="fuhrerrole", description="Modify a user's role")
 @app_commands.describe(
     member="The user whose role you want to change",
@@ -131,11 +133,54 @@ async def fuhrerkick(interaction: discord.Interaction, member: discord.Member, r
     except Exception as e:
         await interaction.response.send_message(f"An error occurred: {str(e)}", ephemeral=True)
 
-# Existing fuhrer command
 @tree.command(name="fuhrer", description="Send a random image")
 async def fuhrer(interaction: discord.Interaction):
     random_image = random.choice(FUHRER_IMAGES)
     await interaction.response.send_message(random_image)
+
+class BetColor(str):
+    COLORS = ['red', 'black']
+
+class BetNumber(int):
+    def __init__(self, value):
+        if not (0 <= value <= 36):
+            raise ValueError("Number must be between 0 and 36")
+
+@tree.command(name="fuhrerroulletewheel", description="bet ur money")
+@app_commands.describe(
+    amount="Amount you'd like to bet",
+    color="The color you'd like to bet on, 1:1 pay",
+    number="1-36, The number you'd like to bet on, 35:1 pay (optional)"
+)
+async def fuhrerroulletewheel(interaction: discord.Interaction, amount: int, color: BetColor, number: BetNumber):
+    if amount <= 0:
+        await interaction.response.send_message("Bet amount must be positive intenigger.", ephemeral=True)
+        return
+    
+    color = color.lower()
+
+    if (color == 'black' and number % 2 != 0) or (color == 'red' and number % 2 == 0):
+        await interaction.response.send_message("Red color must be odd number/Black color must be even number.", ephemeral=True)
+        return
+    
+    number_c = random.randint(1,36)
+    color_c = 'red' if number_c % 2 != 0 else 'black'
+
+    await interaction.response.send_message("Color: " + color_c + "Number: " + str(number_c), ephemeral=True)
+
+    if not number and color_c == color:
+        Money.update_balance(interaction.user.id, amount)
+        await interaction.response.send_message("Your color was correct! Your new balance is: " + str(Money.get_balance(interaction.user.id)), ephemeral=True)
+        return
+    elif number == number_c and color == color_c:
+        Money.update_balance(interaction.user.id, amount*35)
+        await interaction.response.send_message("Your color and number was correct! Your new balance is: " + str(Money.get_balance(interaction.user.id)), ephemeral=True)
+        return
+    else:
+        Money.update_balance(interaction.user.id, -amount)
+        await interaction.response.send_message("Your bet was incorrect. Your new balance is: " + str(Money.get_balance(interaction.user.id)), ephemeral=True)
+        return
+
 
 
 #Run Bot
