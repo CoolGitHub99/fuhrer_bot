@@ -148,12 +148,12 @@ async def fuhrerroulletewheel(
 ):
     # Validate bet amount
     if bet <= 0:
-        await interaction.response.send_message("Bet amount must be a positive integer.", ephemeral=True)
+        await interaction.response.send_message("Bet amount must be a positive integer. ❌", ephemeral=True)
         return
     
     # Check if user has enough balance
     if bet > Money.get_balance(interaction.user.id):
-         await interaction.response.send_message("You don't have enough coins for this bet!", ephemeral=True)
+         await interaction.response.send_message("You don't have enough coins for this bet! ❌", ephemeral=True)
          return
     
     # Normalize color
@@ -161,18 +161,18 @@ async def fuhrerroulletewheel(
     
     # Validate color
     if color not in ['red', 'black']:
-        await interaction.response.send_message("Color must be either 'red' or 'black'.", ephemeral=True)
+        await interaction.response.send_message("Color must be either 'red' or 'black'. ❌", ephemeral=True)
         return
     
     # Validate number if provided
     if number is not None:
         if number < 1 or number > 36:
-            await interaction.response.send_message("Number must be between 1 and 36.", ephemeral=True)
+            await interaction.response.send_message("Number must be between 1 and 36. ❌", ephemeral=True)
             return
         
         # Additional color-number consistency check
         if (color == 'black' and number % 2 != 0) or (color == 'red' and number % 2 == 0):
-            await interaction.response.send_message("Red color must be on odd numbers / Black color must be on even numbers.", ephemeral=True)
+            await interaction.response.send_message("Red color must be on odd numbers / Black color must be on even numbers. ❌", ephemeral=True)
             return
     
     # Generate random spin
@@ -187,20 +187,20 @@ async def fuhrerroulletewheel(
         if number is None:
             if color_c == color:
                 Money.update_balance(interaction.user.id, bet)
-                await interaction.followup.send(f"Your color was correct! You won {bet} coins. New balance: {Money.get_balance(interaction.user.id)}")
+                await interaction.followup.send(f"Your color was correct! ✅ You won {bet} coins. New balance: {Money.get_balance(interaction.user.id)}")
             else:
                 Money.update_balance(interaction.user.id, -bet)
-                await interaction.followup.send(f"Your color was incorrect. You lost {bet} coins. New balance: {Money.get_balance(interaction.user.id)}")
+                await interaction.followup.send(f"Your color was incorrect. ❌ You lost {bet} coins. New balance: {Money.get_balance(interaction.user.id)}")
         
         # Color and number bet
         else:
             if number == number_c and color == color_c:
                 winnings = bet * 35
                 Money.update_balance(interaction.user.id, winnings)
-                await interaction.followup.send(f"JACKPOT! Your color and number were correct! You won {winnings} coins. New balance: {Money.get_balance(interaction.user.id)}")
+                await interaction.followup.send(f"JACKPOT! Your color and number were correct! ✅✅✅ You won {winnings} coins. New balance: {Money.get_balance(interaction.user.id)}")
             else:
                 Money.update_balance(interaction.user.id, -bet)
-                await interaction.followup.send(f"Your bet was incorrect. You lost {bet} coins. New balance: {Money.get_balance(interaction.user.id)}")
+                await interaction.followup.send(f"Your bet was incorrect. ❌ You lost {bet} coins. New balance: {Money.get_balance(interaction.user.id)}")
     
     except Exception as e:
         await interaction.followup.send(f"An error occurred: {str(e)}", ephemeral=True)
