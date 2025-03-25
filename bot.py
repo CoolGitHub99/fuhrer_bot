@@ -2,6 +2,7 @@ import os
 import discord
 from discord import app_commands
 import random
+import json
 
 from dotenv import load_dotenv
 
@@ -28,29 +29,119 @@ FUHRER_IMAGES = [
     'https://media.discordapp.net/attachments/1342337498491392093/1344886518493478982/image.png?ex=67c28aac&is=67c1392c&hm=ec6a0ec902569ff8b4a77db6baa010d2455f2b62f5383272d05fdc143a5620c6&=&format=webp&quality=lossless'
 ]
 
-# Set up intents
+#Setting up my leader
 intents = discord.Intents.default()
 intents.message_content = True
 
-# Create a bot instance
 client = discord.Client(intents=intents)
 tree = app_commands.CommandTree(client)
 
-# Fuhrer command
+#Money
+
+class MoneyManager:
+    def __init__(self, filename='money.txt'):
+        self.filename = filename
+        self.users = self.load_users()
+
+    def load_users(self):
+        if not os.path.exists(self.filename):
+            with open(self.filename, 'w') as f:
+                json.dump({}, f)
+            return {}
+
+        try:
+            with open(self.filename, 'r') as f:
+                return json.load(f)
+        except (json.JSONDecodeError, FileNotFoundError):
+            return {}
+
+    def add_user(self, user_id, initial_balance=100):
+        self.users[str(user_id)] = initial_balance
+        self.save_users()
+
+    def get_balance(self, user_id):
+        return self.users.get(str(user_id), 0)
+
+    def update_balance(self, user_id, amount):
+        user_id = str(user_id)
+        current_balance = self.users.get(user_id, 0)
+        new_balance = current_balance + amount
+        self.users[user_id] = new_balance
+        self.save_users()
+        return new_balance
+
+    def save_users(self):
+        with open(self.filename, 'w') as f:
+            json.dump(self.users, f, indent=4)
+
+@tree.command(name="fuhrerrole", description="Modify a user's role")
+@app_commands.describe(
+    member="The user whose role you want to change",
+    role="The role you want to assign"
+)
+async def fuhrerrole(interaction: discord.Interaction, member: discord.Member, role: discord.Role):
+    if not interaction.user.guild_permissions.manage_roles:
+        await interaction.response.send_message("You don't have permission to manage roles.", ephemeral=True)
+        return
+    
+    try:
+        await member.edit(roles=[interaction.guild.default_role])
+        
+        await member.add_roles(role)
+        
+        await interaction.response.send_message(f"Removed previous roles and assigned {role.mention} to {member.mention}.")
+    except discord.Forbidden:
+        await interaction.response.send_message("I don't have permission to manage roles.", ephemeral=True)
+    except Exception as e:
+        await interaction.response.send_message(f"An error occurred: {str(e)}", ephemeral=True)
+
+@tree.command(name="fuhrerban", description="Ban a user from the server")
+@app_commands.describe(
+    member="The user you want to ban",
+    reason="Reason for the ban (optional)"
+)
+async def fuhrerban(interaction: discord.Interaction, member: discord.Member, reason: str = "No reason provided"):
+    if not interaction.user.guild_permissions.ban_members:
+        await interaction.response.send_message("You don't have permission to ban members.", ephemeral=True)
+        return
+    
+    try:
+        await member.ban(reason=reason)
+        await interaction.response.send_message(f"Permanently Deported {member.mention}. Reason: {reason}")
+    except discord.Forbidden:
+        await interaction.response.send_message("I don't have permission to ban this member.", ephemeral=True)
+    except Exception as e:
+        await interaction.response.send_message(f"An error occurred: {str(e)}", ephemeral=True)
+
+@tree.command(name="fuhrerkick", description="Kick a user from the server")
+@app_commands.describe(
+    member="The user you want to kick",
+    reason="Reason for the kick (optional)"
+)
+async def fuhrerkick(interaction: discord.Interaction, member: discord.Member, reason: str = "No reason provided"):
+    if not interaction.user.guild_permissions.kick_members:
+        await interaction.response.send_message("You don't have permission to kick members.", ephemeral=True)
+        return
+    
+    try:
+        await member.kick(reason=reason)
+        await interaction.response.send_message(f"Deported {member.mention}. Reason: {reason}")
+    except discord.Forbidden:
+        await interaction.response.send_message("I don't have permission to kick this member.", ephemeral=True)
+    except Exception as e:
+        await interaction.response.send_message(f"An error occurred: {str(e)}", ephemeral=True)
+
+# Existing fuhrer command
 @tree.command(name="fuhrer", description="Send a random image")
 async def fuhrer(interaction: discord.Interaction):
-    # Select a random image from the list
     random_image = random.choice(FUHRER_IMAGES)
-    
-    # Send the image
     await interaction.response.send_message(random_image)
 
-# Event listener for when the bot is ready
+
+#Run Bot
 @client.event
 async def on_ready():
-    # Sync the command tree to register slash commands
     await tree.sync()
     print(f'Logged in as {client.user}')
 
-# Run the bot using the token from environment variables
 client.run(os.getenv('DISCORD_BOT_TOKEN'))
