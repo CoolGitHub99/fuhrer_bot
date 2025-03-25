@@ -138,10 +138,6 @@ async def fuhrer(interaction: discord.Interaction):
     random_image = random.choice(FUHRER_IMAGES)
     await interaction.response.send_message(random_image)
 
-@tree.command(name="test", description="Test command")
-async def test(interaction: discord.Interaction):
-    await interaction.followup.send(random.choice(['NIGGER', 'Sieg Hail', 'I dont like jews', 'I am racist']))
-
 #gambling yummy no addiction i can stop whenever i want
 @tree.command(name="fuhrerroulletewheel", description="Bet on roulette")
 async def fuhrerroulletewheel(
