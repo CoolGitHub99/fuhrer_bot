@@ -242,7 +242,7 @@ async def fuhrerslotmachine(interaction: discord.Interaction, bet: int):
     slot2 = random.choice(slots)
     slot3 = random.choice(slots)
 
-    await interaction.followup.send(f"The slots were {slot1}{slot2}{slot3}!")
+    await interaction.response.send_message(f"The slots were {slot1}{slot2}{slot3}!")
 
     if slot1 == slot2 and slot2 == slot3:
         winnings = bet * 10
