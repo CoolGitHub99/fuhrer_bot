@@ -179,8 +179,10 @@ async def fuhrerroulletewheel(
     number_c = random.randint(1, 36)
     color_c = 'red' if number_c % 2 != 0 else 'black'
 
+    color_print = 'black 👨🏿' if number_c == 'black' else 'red 👺'
+
     # Initial response with spin results
-    await interaction.response.send_message(f"Spin result - Color: {color_c}, Number: {number_c}")
+    await interaction.response.send_message(f"Spin result - Color: {color_print}, Number: {number_c}")
 
     try:
         # Color-only bet
