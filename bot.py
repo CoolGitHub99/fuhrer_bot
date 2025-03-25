@@ -6,10 +6,8 @@ import json
 
 from dotenv import load_dotenv
 
-# Load environment variables
 load_dotenv()
 
-# List of random images
 FUHRER_IMAGES = [
     'https://cdn.discordapp.com/attachments/1329672215871885385/1344097518685913098/IMG_1888.jpg?ex=67c24edc&is=67c0fd5c&hm=49441768ec2fef65341cb9ef5c4f5178653188a970e23d76d314492e26329138&', 
     'https://cdn.discordapp.com/attachments/1329672215871885385/1343242519949082675/IMG_6177.jpg?ex=67c1d594&is=67c08414&hm=77dd3e85d0715165087a4781b6d012895f1ebfcb2e0fff9e37acf0add4e41631&', 
@@ -84,6 +82,8 @@ class MoneyManager:
             json.dump(self.users, f, indent=4)
 
 Money = MoneyManager()
+
+#Main commands
 
 @tree.command(name="fuhrermoney", description="The amount of money a user has")
 @app_commands.describe(
@@ -162,58 +162,46 @@ async def fuhrerroulletewheel(
     color: str,
     number: int = None
 ):
-    # Predefined roulette colors
     red_numbers = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36]
     black_numbers = [2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35]
 
-    # Validate bet amount
     if bet <= 0:
         await interaction.response.send_message("Bet amount must be a positive integer. ❌", ephemeral=True)
         return 
-
-    # Check if user has enough balance
+    
     if bet > Money.get_balance(interaction.user.id):
-        await interaction.response.send_message(f"You don't have enough coins for this bet! ❌ You Have: {Money.get_balance(interaction.user.id)}" , ephemeral=True)
+        await interaction.response.send_message(f"You don't have enough money for this bet! ❌ You Have: {Money.get_balance(interaction.user.id)}" , ephemeral=True)
         return 
 
-    # Normalize color
     color = color.lower()
 
-    # Validate color
     if color not in ['red', 'black']:
         await interaction.response.send_message("Color must be either 'red' or 'black'. ❌", ephemeral=True)
         return 
 
-    # Generate random spin
     number_c = random.randint(1, 36)
 
-    # Determine color based on number
     if number_c in red_numbers:
         color_c = 'red'
     elif number_c in black_numbers:
         color_c = 'black'
     else:
-        color_c = 'green'  # for zero or any unexpected number
+        color_c = 'green' #just incase prob wont happen
 
-    # Create color display
     color_print = 'black 👨🏿' if color_c == 'black' else 'red 👺' if color_c == 'red' else 'green 🟢'
 
-    # Initial response with spin results
     await interaction.response.send_message(f"Spin result - Color: {color_print}, Number: {number_c}")
 
     try:
-        # Color-only bet
         if number is None:
             if color_c == color:
                 Money.update_balance(interaction.user.id, bet)
-                await interaction.followup.send(f"Your color was correct! ✅ You won {bet} coins. New balance: {Money.get_balance(interaction.user.id)}")
+                await interaction.followup.send(f"Your color was correct! ✅ You won {bet} dollars. New balance: {Money.get_balance(interaction.user.id)}")
             else:
                 Money.update_balance(interaction.user.id, -bet)
-                await interaction.followup.send(f"Your color was incorrect. ❌ You lost {bet} coins. New balance: {Money.get_balance(interaction.user.id)}")
+                await interaction.followup.send(f"Your color was incorrect. ❌ You lost {bet} dollars. New balance: {Money.get_balance(interaction.user.id)}")
         
-        # Color and number bet
         else:
-            # Validate number if provided
             if number < 1 or number > 36:
                 await interaction.followup.send("Number must be between 1 and 36. ❌", ephemeral=True)
                 return
@@ -221,16 +209,56 @@ async def fuhrerroulletewheel(
             if number == number_c and color == color_c:
                 winnings = bet * 35
                 Money.update_balance(interaction.user.id, winnings)
-                await interaction.followup.send(f"JACKPOT! Your color and number were correct! ✅✅✅ You won {winnings} coins. New balance: {Money.get_balance(interaction.user.id)}")
+                await interaction.followup.send(f"JACKPOT! Your color and number were correct! ✅✅✅ You won {winnings} dollars. New balance: {Money.get_balance(interaction.user.id)}")
             else:
                 Money.update_balance(interaction.user.id, -bet)
-                await interaction.followup.send(f"Your bet was incorrect. ❌ You lost {bet} coins. New balance: {Money.get_balance(interaction.user.id)}")
+                await interaction.followup.send(f"Your guess was incorrect. ❌ You lost {bet} dollars. New balance: {Money.get_balance(interaction.user.id)}")
 
     except Exception as e:
         await interaction.followup.send(f"An error occurred: {str(e)}", ephemeral=True)
 
 
-#Run Bot
+slots = [
+    "🍒",
+    "🍋",
+    "🍊",
+    "🍇",
+    "🔔",
+    "🏴‍☠️",
+    "7️⃣",
+]
+
+@tree.command(name="fuhrerslotmachine", description="Slot machine to gamble gamble credit card money")
+async def fuhrerslotmachine(interaction: discord.Interaction, bet: int):
+    if bet <= 0:
+        await interaction.response.send_message("Bet amount must be a positive integer. ❌", ephemeral=True)
+        return 
+
+    if bet > Money.get_balance(interaction.user.id):
+        await interaction.response.send_message(f"You don't have enough money for this bet! ❌ You Have: {Money.get_balance(interaction.user.id)}" , ephemeral=True)
+        return 
+    
+    slot1 = random.choice(slots)
+    slot2 = random.choice(slots)
+    slot3 = random.choice(slots)
+
+    await interaction.followup.send(f"The slots were {slot1}{slot2}{slot3}!")
+
+    if slot1 == slot2 and slot2 == slot3:
+        winnings = bet * 10
+        Money.update_balance(interaction.user.id, winnings)
+        await interaction.followup.send(f"JACKPOT! You got all three slots! ✅✅✅ You won {winnings} dollars. New balance: {Money.get_balance(interaction.user.id)}")
+    elif slot1 == slot2 or slot2 == slot3:
+        winnings = bet * 2
+        Money.update_balance(interaction.user.id, winnings)
+        await interaction.followup.send(f"Two slots were correct! ✅ You won {winnings} dollars. New balance: {Money.get_balance(interaction.user.id)}")
+    else:
+        Money.update_balance(interaction.user.id, -bet)
+        await interaction.followup.send(f"Your slots were incorrect. ❌ You lost {bet} dollars. New balance: {Money.get_balance(interaction.user.id)}")
+
+
+
+#turning him on :)
 @client.event
 async def on_ready():
     print(f'Logged in as {client.user}')
