@@ -88,13 +88,14 @@ class LotteryManager:
         logging.warning("All lottery tickets cleared")
 
     def pick_ticket(self):
-        if not self.users:
+        if not self.users:  
             logging.warning("No tickets in the lottery")
             return None
         
         picked = random.choice(list(self.users.values()))
         self.clear_data()
         return picked
+    
 Lottery = LotteryManager()
 
 
@@ -360,21 +361,24 @@ async def fuhrerlotteryticket(interaction: discord.Interaction):
 
 @tree.command(name="runlottery", description="Only the bot owner can run this command.")
 async def runlottery(interaction: discord.Interaction):
-    owner_id = 701932525551091743
+    owner_id = 701932525551091743  # Replace with your actual Discord ID
 
     if interaction.user.id != owner_id:
-        await interaction.response.send_message("❌ NIGGER.", ephemeral=True)
+        await interaction.response.send_message("❌ You are not authorized to run this command.", ephemeral=True)
         return
 
     picked = Lottery.pick_ticket()
-    guild = interaction.guild 
     
+    if picked is None:  # Check if no tickets were in the lottery
+        await interaction.response.send_message("❌ No lottery tickets were purchased.", ephemeral=True)
+        return
+
+    guild = interaction.guild 
     if guild is None:
         await interaction.response.send_message("❌ This command must be used in a server.", ephemeral=True)
         return
 
     member = guild.get_member(picked)  
-
     if member is None:  
         try:
             member = await guild.fetch_member(picked)
@@ -384,7 +388,6 @@ async def runlottery(interaction: discord.Interaction):
 
     await interaction.response.send_message(f"🎉 {member.mention} has won the lottery! @everyone")
 
-#turning him on :)
 @client.event
 async def on_ready():
     print(f'Logged in as {client.user}')
