@@ -286,16 +286,16 @@ async def fuhrerroulletewheel(
 
     color_print = 'black 👨🏿' if color_c == 'black' else 'red 👺' if color_c == 'red' else 'green 🟢'
 
-    await interaction.response.send_message(f"Spin result - Color: {color_print}, Number: {number_c}")
+    await interaction.response.send_message(f"Spin result - Color: {color_print}, Number: {number_c}", ephemeral=True)
 
     try:
         if number is None:
             if color_c == color:
                 Money.update_balance(interaction.user.id, bet)
-                await interaction.followup.send(f"Your color was correct! ✅ You won {bet} dollars. New balance: {Money.get_balance(interaction.user.id)}")
+                await interaction.followup.send(f"Your color was correct! ✅ You won {bet} dollars. New balance: {Money.get_balance(interaction.user.id)}", ephemeral=True)
             else:
                 Money.update_balance(interaction.user.id, -bet)
-                await interaction.followup.send(f"Your color was incorrect. ❌ You lost {bet} dollars. New balance: {Money.get_balance(interaction.user.id)}")
+                await interaction.followup.send(f"Your color was incorrect. ❌ You lost {bet} dollars. New balance: {Money.get_balance(interaction.user.id)}", ephemeral=True)
         
         else:
             if number < 1 or number > 36:
@@ -305,10 +305,10 @@ async def fuhrerroulletewheel(
             if number == number_c and color == color_c:
                 winnings = bet * 35
                 Money.update_balance(interaction.user.id, winnings)
-                await interaction.followup.send(f"JACKPOT! Your color and number were correct! ✅✅✅ You won {winnings} dollars. New balance: {Money.get_balance(interaction.user.id)}")
+                await interaction.followup.send(f"JACKPOT! Your color and number were correct! ✅✅✅ You won {winnings} dollars. New balance: {Money.get_balance(interaction.user.id)}", ephemeral=True)
             else:
                 Money.update_balance(interaction.user.id, -bet)
-                await interaction.followup.send(f"Your guess was incorrect. ❌ You lost {bet} dollars. New balance: {Money.get_balance(interaction.user.id)}")
+                await interaction.followup.send(f"Your guess was incorrect. ❌ You lost {bet} dollars. New balance: {Money.get_balance(interaction.user.id)}", ephemeral=True)
 
     except Exception as e:
         await interaction.followup.send(f"An error occurred: {str(e)}", ephemeral=True)
@@ -346,7 +346,7 @@ async def fuhrerslotmachine(interaction: discord.Interaction, bet: int):
         Money.update_balance(interaction.user.id, -bet)
         result_message += f"\n❌ You lost {bet} dollars. New balance: {Money.get_balance(interaction.user.id)}"
 
-    await interaction.response.send_message(result_message)
+    await interaction.response.send_message(result_message, ephemeral=True)
 
 @tree.command(name="fuhrerlotteryticket", description="Purchase a lottery ticket for $100000.")
 async def fuhrerlotteryticket(interaction: discord.Interaction):
