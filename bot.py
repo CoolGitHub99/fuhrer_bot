@@ -34,7 +34,44 @@ intents.message_content = True
 client = discord.Client(intents=intents)
 tree = app_commands.CommandTree(client)
 
-#Money
+#Json
+class LotteryManager:
+    def __init__(self, filename='lottery.txt'):
+        self.filename = filename
+        self.tickets = self.load_tickets()
+
+    def load_tickets(self):
+        if not os.path.exists(self.filename):
+            with open(self.filename, 'w') as f:
+                json.dump({}, f)
+            return {}
+
+        try:
+            with open(self.filename, 'r') as f:
+                return json.load(f)
+        except (json.JSONDecodeError, FileNotFoundError):
+            return {}
+        
+    def add_ticket(self, user_id):
+        ticketnumber = random.randrange(1,100000000)
+        self.users[str(ticketnumber)] = user_id
+        self.save_tickets()
+        return ticketnumber
+
+    def save_tickets(self):
+        with open(self.filename, 'w') as f:
+            json.dump(self.users, f, indent=4)
+
+    def clear_data(self):
+        self.users = {}
+        self.save_tickets()
+
+    def pick_ticket(self):
+        picked = random.choice(self.users)
+        self.clear_data()
+        return picked
+    
+Lottery = LotteryManager()
 
 class MoneyManager:
     def __init__(self, filename='money.txt', default_balance=200):
@@ -178,6 +215,11 @@ async def fuhrerroulletewheel(
     if color not in ['red', 'black']:
         await interaction.response.send_message("Color must be either 'red' or 'black'. ❌", ephemeral=True)
         return 
+    
+    if number is not None and (number not in red_numbers and color == 'red'):
+        await interaction.response.send_message("Red must have an odd number'. ❌", ephemeral=True)
+    if number is not None and (number not in black_numbers and color == 'black'):
+        await interaction.response.send_message("Black must have an even number'. ❌", ephemeral=True)
 
     number_c = random.randint(1, 36)
 
@@ -255,6 +297,25 @@ async def fuhrerslotmachine(interaction: discord.Interaction, bet: int):
     else:
         Money.update_balance(interaction.user.id, -bet)
         await interaction.followup.send(f"Your slots were incorrect. ❌ You lost {bet} dollars. New balance: {Money.get_balance(interaction.user.id)}")
+
+#lottery
+@tree.command(name="fuhrerlotteryticket", description="purhcase lottery ticket for $5000")
+async def fuhrerlotteryticket(interaction: discord.Interaction):
+    if int(Money.get_balance(interaction.user.id)) >= 5000:
+        Money.update_balance(interaction.user.id, -5000)
+        ticket = Lottery.add_ticket(interaction.user.id)
+        interaction.response.send_message(f"Successfully Purchased a lottery ticket! lottery id: {ticket}. Remaining Balance: {Money.get_balance(interaction.user.id)}")
+    else:
+        await interaction.followup.send(f"You do not have enough money for a lottery ticked. ❌ Current balance: {Money.get_balance(interaction.user.id)}")
+
+@tree.command(name="runlottery", description="only owner can do")
+async def runlottery(interaction: discord.Interaction):
+    if int(interaction.user.id ) != 701932525551091743:
+        await interaction.followup.send(f"NIGGER. ❌")
+        return
+    else:
+        picked = Lottery.pick_ticket()
+        await interaction.response.send_message(f"{picked} has won the lottery! @everyone")
 
 
 
