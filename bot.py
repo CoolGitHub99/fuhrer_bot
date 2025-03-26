@@ -171,11 +171,6 @@ class MoneyManager:
         except IOError as e:
             logging.error(f"Error saving users: {e}")
 
-    def clear_data(self):
-        self.users = {}
-        self.save_users()
-        logging.warning("All user data cleared")
-
 Money = MoneyManager()
 
 #Main commands
@@ -372,8 +367,22 @@ async def runlottery(interaction: discord.Interaction):
         return
 
     picked = Lottery.pick_ticket()
-    await interaction.response.send_message(f"🎉 {interaction.guild.get_member(picked).mention} has won the lottery! @everyone")
+    guild = interaction.guild 
+    
+    if guild is None:
+        await interaction.response.send_message("❌ This command must be used in a server.", ephemeral=True)
+        return
 
+    member = guild.get_member(picked)  
+
+    if member is None:  
+        try:
+            member = await guild.fetch_member(picked)
+        except discord.NotFound:
+            await interaction.response.send_message("❌ The winner is not in the server.")
+            return
+
+    await interaction.response.send_message(f"🎉 {member.mention} has won the lottery! @everyone")
 
 #turning him on :)
 @client.event

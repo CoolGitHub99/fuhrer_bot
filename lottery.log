@@ -70,3 +70,61 @@ discord.app_commands.errors.CommandInvokeError: Command 'fuhrerlotteryticket' ra
 2025-03-25 18:50:07,417 - INFO - Successfully saved 1 tickets to lottery.txt
 2025-03-25 18:50:17,816 - INFO - Successfully saved 0 tickets to lottery.txt
 2025-03-25 18:50:17,816 - WARNING - All lottery tickets cleared
+2025-03-25 18:52:20,057 - ERROR - Error loading tickets: [WinError 3] The system cannot find the path specified: ''
+2025-03-25 18:52:20,057 - ERROR - Error loading users: [WinError 3] The system cannot find the path specified: ''
+2025-03-25 18:52:20,059 - INFO - logging in using static token
+2025-03-25 18:52:21,455 - INFO - Shard ID None has connected to Gateway (Session ID: cd4533ee39bee570e9b995084d204a08).
+2025-03-25 18:52:39,104 - INFO - Added new user 701932525551091743 with default balance 200
+2025-03-25 18:52:39,105 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:52:46,806 - INFO - User 701932525551091743: Balance changed from 200 to 200 (delta: -200)
+2025-03-25 18:52:46,806 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:52:47,954 - INFO - User 701932525551091743: Balance changed from 200 to 800 (delta: 600)
+2025-03-25 18:52:47,954 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:52:49,550 - INFO - User 701932525551091743: Balance changed from 800 to 600 (delta: -200)
+2025-03-25 18:52:49,551 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:52:53,003 - INFO - User 701932525551091743: Balance changed from 600 to 400 (delta: -200)
+2025-03-25 18:52:53,003 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:52:54,507 - INFO - User 701932525551091743: Balance changed from 400 to 1000 (delta: 600)
+2025-03-25 18:52:54,508 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:52:57,111 - INFO - User 701932525551091743: Balance changed from 1000 to 800 (delta: -200)
+2025-03-25 18:52:57,112 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:52:59,489 - INFO - User 701932525551091743: Balance changed from 800 to 1400 (delta: 600)
+2025-03-25 18:52:59,490 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:54:28,324 - INFO - User 701932525551091743: Balance changed from 1400 to 2000 (delta: 600)
+2025-03-25 18:54:28,325 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:54:29,772 - INFO - User 701932525551091743: Balance changed from 2000 to 1800 (delta: -200)
+2025-03-25 18:54:29,772 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:54:30,967 - INFO - User 701932525551091743: Balance changed from 1800 to 2400 (delta: 600)
+2025-03-25 18:54:30,967 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:54:34,485 - INFO - User 701932525551091743: Balance changed from 2400 to 2200 (delta: -200)
+2025-03-25 18:54:34,485 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:54:37,100 - INFO - User 701932525551091743: Balance changed from 2200 to 2000 (delta: -200)
+2025-03-25 18:54:37,101 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:54:38,683 - INFO - User 701932525551091743: Balance changed from 2000 to 5000 (delta: 3000)
+2025-03-25 18:54:38,684 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:54:53,124 - INFO - User 701932525551091743: Balance changed from 5000 to 200 (delta: -5000)
+2025-03-25 18:54:53,125 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:54:53,125 - INFO - Successfully saved 1 tickets to lottery.txt
+2025-03-25 18:55:07,258 - INFO - Successfully saved 0 tickets to lottery.txt
+2025-03-25 18:55:07,258 - WARNING - All lottery tickets cleared
+2025-03-25 18:55:07,258 - ERROR - Ignoring exception in command 'runlottery'
+Traceback (most recent call last):
+  File "C:\Users\owenc\AppData\Roaming\Python\Python312\site-packages\discord\app_commands\commands.py", line 858, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\owenc\python\fuhrer\bot.py", line 375, in runlottery
+    async def on_ready():
+                          
+AttributeError: 'NoneType' object has no attribute 'mention'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\owenc\AppData\Roaming\Python\Python312\site-packages\discord\app_commands\tree.py", line 1310, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "C:\Users\owenc\AppData\Roaming\Python\Python312\site-packages\discord\app_commands\commands.py", line 883, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\owenc\AppData\Roaming\Python\Python312\site-packages\discord\app_commands\commands.py", line 876, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'runlottery' raised an exception: AttributeError: 'NoneType' object has no attribute 'mention'
