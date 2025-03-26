@@ -128,3 +128,437 @@ Traceback (most recent call last):
   File "C:\Users\owenc\AppData\Roaming\Python\Python312\site-packages\discord\app_commands\commands.py", line 876, in _do_call
     raise CommandInvokeError(self, e) from e
 discord.app_commands.errors.CommandInvokeError: Command 'runlottery' raised an exception: AttributeError: 'NoneType' object has no attribute 'mention'
+2025-03-25 18:56:34,094 - ERROR - Error loading tickets: [WinError 3] The system cannot find the path specified: ''
+2025-03-25 18:56:34,094 - ERROR - Error loading users: [WinError 3] The system cannot find the path specified: ''
+2025-03-25 18:56:34,095 - INFO - logging in using static token
+2025-03-25 18:56:35,248 - INFO - Shard ID None has connected to Gateway (Session ID: 61e3c175ae333e020668d455953c81fe).
+2025-03-25 18:56:53,703 - INFO - Added new user 701932525551091743 with default balance 200
+2025-03-25 18:56:53,704 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:56:58,732 - INFO - User 701932525551091743: Balance changed from 200 to 800 (delta: 600)
+2025-03-25 18:56:58,733 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:57:00,115 - INFO - User 701932525551091743: Balance changed from 800 to 600 (delta: -200)
+2025-03-25 18:57:00,116 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:57:01,479 - INFO - User 701932525551091743: Balance changed from 600 to 400 (delta: -200)
+2025-03-25 18:57:01,479 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:57:03,991 - INFO - User 701932525551091743: Balance changed from 400 to 200 (delta: -200)
+2025-03-25 18:57:03,991 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:57:06,557 - INFO - User 701932525551091743: Balance changed from 200 to 200 (delta: -200)
+2025-03-25 18:57:06,558 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:57:09,801 - INFO - User 701932525551091743: Balance changed from 200 to 200 (delta: -200)
+2025-03-25 18:57:09,802 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:59:52,205 - INFO - User 701932525551091743: Balance changed from 200 to 800 (delta: 600)
+2025-03-25 18:59:52,205 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:59:54,240 - INFO - User 701932525551091743: Balance changed from 800 to 1400 (delta: 600)
+2025-03-25 18:59:54,240 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:59:55,298 - INFO - User 701932525551091743: Balance changed from 1400 to 1200 (delta: -200)
+2025-03-25 18:59:55,299 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:59:57,675 - INFO - User 701932525551091743: Balance changed from 1200 to 1000 (delta: -200)
+2025-03-25 18:59:57,675 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:00:00,232 - INFO - User 701932525551091743: Balance changed from 1000 to 1600 (delta: 600)
+2025-03-25 19:00:00,233 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:00:02,783 - INFO - User 701932525551091743: Balance changed from 1600 to 2200 (delta: 600)
+2025-03-25 19:00:02,783 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:00:05,189 - INFO - User 701932525551091743: Balance changed from 2200 to 2000 (delta: -200)
+2025-03-25 19:00:05,190 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:00:07,604 - INFO - User 701932525551091743: Balance changed from 2000 to 1800 (delta: -200)
+2025-03-25 19:00:07,604 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:00:10,247 - INFO - User 701932525551091743: Balance changed from 1800 to 1600 (delta: -200)
+2025-03-25 19:00:10,247 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:00:12,635 - INFO - User 701932525551091743: Balance changed from 1600 to 2200 (delta: 600)
+2025-03-25 19:00:12,635 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:00:22,105 - INFO - User 701932525551091743: Balance changed from 2200 to 200 (delta: -2000)
+2025-03-25 19:00:22,106 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:00:25,637 - INFO - User 701932525551091743: Balance changed from 200 to 800 (delta: 600)
+2025-03-25 19:00:25,637 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:00:27,119 - INFO - User 701932525551091743: Balance changed from 800 to 1400 (delta: 600)
+2025-03-25 19:00:27,120 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:00:28,465 - INFO - User 701932525551091743: Balance changed from 1400 to 2000 (delta: 600)
+2025-03-25 19:00:28,465 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:00:30,769 - INFO - User 701932525551091743: Balance changed from 2000 to 1800 (delta: -200)
+2025-03-25 19:00:30,769 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:00:33,141 - INFO - User 701932525551091743: Balance changed from 1800 to 1600 (delta: -200)
+2025-03-25 19:00:33,142 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:00:36,420 - INFO - User 701932525551091743: Balance changed from 1600 to 2200 (delta: 600)
+2025-03-25 19:00:36,421 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:00:37,991 - INFO - User 701932525551091743: Balance changed from 2200 to 2000 (delta: -200)
+2025-03-25 19:00:37,991 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:00:40,599 - INFO - User 701932525551091743: Balance changed from 2000 to 1800 (delta: -200)
+2025-03-25 19:00:40,600 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:00:43,895 - INFO - User 701932525551091743: Balance changed from 1800 to 1600 (delta: -200)
+2025-03-25 19:00:43,896 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:00:46,191 - INFO - User 701932525551091743: Balance changed from 1600 to 2200 (delta: 600)
+2025-03-25 19:00:46,192 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:00:48,791 - INFO - User 701932525551091743: Balance changed from 2200 to 2000 (delta: -200)
+2025-03-25 19:00:48,792 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:00:51,219 - INFO - User 701932525551091743: Balance changed from 2000 to 1800 (delta: -200)
+2025-03-25 19:00:51,220 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:00:53,720 - INFO - User 701932525551091743: Balance changed from 1800 to 2400 (delta: 600)
+2025-03-25 19:00:53,720 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:01:05,845 - INFO - User 701932525551091743: Balance changed from 2400 to 200 (delta: -2400)
+2025-03-25 19:01:05,846 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:01:08,786 - INFO - User 701932525551091743: Balance changed from 200 to 200 (delta: -200)
+2025-03-25 19:01:08,786 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:01:09,993 - INFO - User 701932525551091743: Balance changed from 200 to 200 (delta: -200)
+2025-03-25 19:01:09,993 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:01:11,500 - INFO - User 701932525551091743: Balance changed from 200 to 200 (delta: -200)
+2025-03-25 19:01:11,500 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:01:13,759 - INFO - User 701932525551091743: Balance changed from 200 to 800 (delta: 600)
+2025-03-25 19:01:13,760 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:01:17,889 - INFO - User 701932525551091743: Balance changed from 800 to 3800 (delta: 3000)
+2025-03-25 19:01:17,889 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:04:18,046 - INFO - Added new user 1151644112454439023 with default balance 200
+2025-03-25 19:04:18,047 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:04:18,047 - INFO - User 1151644112454439023: Balance changed from 200 to 800 (delta: 600)
+2025-03-25 19:04:18,047 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:04:29,794 - INFO - User 1151644112454439023: Balance changed from 800 to 1400 (delta: 600)
+2025-03-25 19:04:29,795 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:04:36,357 - INFO - User 701932525551091743: Balance changed from 3800 to 3600 (delta: -200)
+2025-03-25 19:04:36,358 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:04:37,662 - INFO - User 701932525551091743: Balance changed from 3600 to 3400 (delta: -200)
+2025-03-25 19:04:37,662 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:04:39,924 - INFO - User 701932525551091743: Balance changed from 3400 to 4000 (delta: 600)
+2025-03-25 19:04:39,925 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:04:47,328 - INFO - User 701932525551091743: Balance changed from 4000 to 3000 (delta: -1000)
+2025-03-25 19:04:47,329 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:04:47,535 - INFO - User 1151644112454439023: Balance changed from 1400 to 2000 (delta: 600)
+2025-03-25 19:04:47,535 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:04:50,239 - INFO - User 1151644112454439023: Balance changed from 2000 to 2600 (delta: 600)
+2025-03-25 19:04:50,240 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:04:56,809 - INFO - User 1151644112454439023: Balance changed from 2600 to 3200 (delta: 600)
+2025-03-25 19:04:56,810 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:04:57,030 - INFO - User 701932525551091743: Balance changed from 3000 to 2000 (delta: -1000)
+2025-03-25 19:04:57,031 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:04:58,494 - INFO - User 701932525551091743: Balance changed from 2000 to 3000 (delta: 1000)
+2025-03-25 19:04:58,495 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:01,865 - INFO - User 701932525551091743: Balance changed from 3000 to 2000 (delta: -1000)
+2025-03-25 19:05:01,866 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:02,977 - INFO - User 1151644112454439023: Balance changed from 3200 to 3800 (delta: 600)
+2025-03-25 19:05:02,978 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:03,292 - INFO - User 701932525551091743: Balance changed from 2000 to 1000 (delta: -1000)
+2025-03-25 19:05:03,293 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:06,842 - INFO - User 1151644112454439023: Balance changed from 3800 to 3600 (delta: -200)
+2025-03-25 19:05:06,843 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:08,494 - INFO - User 701932525551091743: Balance changed from 1000 to 2000 (delta: 1000)
+2025-03-25 19:05:08,495 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:10,148 - INFO - User 701932525551091743: Balance changed from 2000 to 1000 (delta: -1000)
+2025-03-25 19:05:10,149 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:15,528 - INFO - User 1151644112454439023: Balance changed from 3600 to 4200 (delta: 600)
+2025-03-25 19:05:15,528 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:21,120 - INFO - User 1151644112454439023: Balance changed from 4200 to 4800 (delta: 600)
+2025-03-25 19:05:21,120 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:23,750 - INFO - User 701932525551091743: Balance changed from 1000 to 800 (delta: -200)
+2025-03-25 19:05:23,750 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:25,061 - INFO - User 701932525551091743: Balance changed from 800 to 600 (delta: -200)
+2025-03-25 19:05:25,062 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:25,846 - INFO - User 1151644112454439023: Balance changed from 4800 to 5400 (delta: 600)
+2025-03-25 19:05:25,846 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:26,313 - INFO - User 701932525551091743: Balance changed from 600 to 1200 (delta: 600)
+2025-03-25 19:05:26,314 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:29,042 - INFO - User 1151644112454439023: Balance changed from 5400 to 6000 (delta: 600)
+2025-03-25 19:05:29,043 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:29,593 - INFO - User 701932525551091743: Balance changed from 1200 to 1800 (delta: 600)
+2025-03-25 19:05:29,593 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:31,329 - INFO - User 701932525551091743: Balance changed from 1800 to 1600 (delta: -200)
+2025-03-25 19:05:31,329 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:31,587 - INFO - User 1151644112454439023: Balance changed from 6000 to 6600 (delta: 600)
+2025-03-25 19:05:31,587 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:33,919 - INFO - User 701932525551091743: Balance changed from 1600 to 1400 (delta: -200)
+2025-03-25 19:05:33,919 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:36,274 - INFO - User 1151644112454439023: Balance changed from 6600 to 6400 (delta: -200)
+2025-03-25 19:05:36,274 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:37,320 - INFO - User 701932525551091743: Balance changed from 1400 to 2000 (delta: 600)
+2025-03-25 19:05:37,320 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:38,701 - INFO - User 701932525551091743: Balance changed from 2000 to 1800 (delta: -200)
+2025-03-25 19:05:38,703 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:38,897 - INFO - User 1151644112454439023: Balance changed from 6400 to 7000 (delta: 600)
+2025-03-25 19:05:38,898 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:41,256 - INFO - User 701932525551091743: Balance changed from 1800 to 1600 (delta: -200)
+2025-03-25 19:05:41,257 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:42,215 - INFO - User 1151644112454439023: Balance changed from 7000 to 6800 (delta: -200)
+2025-03-25 19:05:42,215 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:45,471 - INFO - User 1151644112454439023: Balance changed from 6800 to 7400 (delta: 600)
+2025-03-25 19:05:45,472 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:49,163 - INFO - User 1151644112454439023: Balance changed from 7400 to 8000 (delta: 600)
+2025-03-25 19:05:49,163 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:59,795 - INFO - User 1151644112454439023: Balance changed from 8000 to 3000 (delta: -5000)
+2025-03-25 19:05:59,795 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:05:59,796 - INFO - Successfully saved 1 tickets to lottery.txt
+2025-03-25 19:07:09,167 - INFO - User 1151644112454439023: Balance changed from 3000 to 4800 (delta: 1800)
+2025-03-25 19:07:09,168 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:07:23,904 - INFO - User 1151644112454439023: Balance changed from 4800 to 6600 (delta: 1800)
+2025-03-25 19:07:23,904 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:07:26,386 - INFO - User 1151644112454439023: Balance changed from 6600 to 8400 (delta: 1800)
+2025-03-25 19:07:26,386 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:07:29,044 - INFO - User 1151644112454439023: Balance changed from 8400 to 10200 (delta: 1800)
+2025-03-25 19:07:29,044 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:07:31,289 - INFO - User 1151644112454439023: Balance changed from 10200 to 12000 (delta: 1800)
+2025-03-25 19:07:31,290 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:07:33,980 - INFO - User 1151644112454439023: Balance changed from 12000 to 13800 (delta: 1800)
+2025-03-25 19:07:33,980 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:07:43,404 - INFO - User 1151644112454439023: Balance changed from 13800 to 16800 (delta: 3000)
+2025-03-25 19:07:43,405 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:07:46,133 - INFO - User 1151644112454439023: Balance changed from 16800 to 19800 (delta: 3000)
+2025-03-25 19:07:46,134 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:07:48,395 - INFO - User 1151644112454439023: Balance changed from 19800 to 18800 (delta: -1000)
+2025-03-25 19:07:48,396 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:07:50,927 - INFO - User 1151644112454439023: Balance changed from 18800 to 21800 (delta: 3000)
+2025-03-25 19:07:50,928 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:07:53,902 - INFO - User 1151644112454439023: Balance changed from 21800 to 24800 (delta: 3000)
+2025-03-25 19:07:53,902 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:08:00,831 - INFO - User 1151644112454439023: Balance changed from 24800 to 23800 (delta: -1000)
+2025-03-25 19:08:00,832 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:08:06,047 - INFO - User 1151644112454439023: Balance changed from 23800 to 26800 (delta: 3000)
+2025-03-25 19:08:06,048 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:09:15,846 - INFO - User 1151644112454439023: Balance changed from 26800 to 29800 (delta: 3000)
+2025-03-25 19:09:15,847 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:09:18,571 - INFO - User 1151644112454439023: Balance changed from 29800 to 32800 (delta: 3000)
+2025-03-25 19:09:18,571 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:09:24,734 - INFO - User 1151644112454439023: Balance changed from 32800 to 31800 (delta: -1000)
+2025-03-25 19:09:24,734 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:09:29,247 - INFO - User 1151644112454439023: Balance changed from 31800 to 30800 (delta: -1000)
+2025-03-25 19:09:29,248 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:09:33,157 - INFO - User 1151644112454439023: Balance changed from 30800 to 29800 (delta: -1000)
+2025-03-25 19:09:33,157 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:09:40,319 - INFO - User 1151644112454439023: Balance changed from 29800 to 28800 (delta: -1000)
+2025-03-25 19:09:40,320 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:09:43,894 - INFO - User 1151644112454439023: Balance changed from 28800 to 31800 (delta: 3000)
+2025-03-25 19:09:43,895 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:10:47,960 - INFO - User 1151644112454439023: Balance changed from 31800 to 26800 (delta: -5000)
+2025-03-25 19:10:47,960 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:10:47,961 - INFO - Successfully saved 2 tickets to lottery.txt
+2025-03-25 19:10:54,111 - INFO - User 1151644112454439023: Balance changed from 26800 to 21800 (delta: -5000)
+2025-03-25 19:10:54,111 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:10:54,112 - INFO - Successfully saved 3 tickets to lottery.txt
+2025-03-25 19:11:00,488 - INFO - User 1151644112454439023: Balance changed from 21800 to 16800 (delta: -5000)
+2025-03-25 19:11:00,489 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:11:00,489 - INFO - Successfully saved 4 tickets to lottery.txt
+2025-03-25 19:11:05,434 - INFO - User 1151644112454439023: Balance changed from 16800 to 11800 (delta: -5000)
+2025-03-25 19:11:05,435 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:11:05,435 - INFO - Successfully saved 5 tickets to lottery.txt
+2025-03-25 19:11:12,233 - INFO - User 1151644112454439023: Balance changed from 11800 to 10800 (delta: -1000)
+2025-03-25 19:11:12,234 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:11:15,628 - INFO - User 1151644112454439023: Balance changed from 10800 to 13800 (delta: 3000)
+2025-03-25 19:11:15,628 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:11:18,652 - INFO - User 1151644112454439023: Balance changed from 13800 to 12800 (delta: -1000)
+2025-03-25 19:11:18,653 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:11:24,779 - INFO - User 1151644112454439023: Balance changed from 12800 to 11800 (delta: -1000)
+2025-03-25 19:11:24,779 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:11:29,529 - INFO - User 1151644112454439023: Balance changed from 11800 to 14800 (delta: 3000)
+2025-03-25 19:11:29,529 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:11:32,895 - INFO - User 1151644112454439023: Balance changed from 14800 to 17800 (delta: 3000)
+2025-03-25 19:11:32,895 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:11:35,994 - INFO - User 1151644112454439023: Balance changed from 17800 to 16800 (delta: -1000)
+2025-03-25 19:11:35,995 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:11:38,890 - INFO - User 1151644112454439023: Balance changed from 16800 to 19800 (delta: 3000)
+2025-03-25 19:11:38,891 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:11:41,745 - INFO - User 1151644112454439023: Balance changed from 19800 to 18800 (delta: -1000)
+2025-03-25 19:11:41,745 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:11:45,297 - INFO - User 1151644112454439023: Balance changed from 18800 to 21800 (delta: 3000)
+2025-03-25 19:11:45,298 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:11:48,427 - INFO - User 1151644112454439023: Balance changed from 21800 to 20800 (delta: -1000)
+2025-03-25 19:11:48,427 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:11:51,828 - INFO - User 1151644112454439023: Balance changed from 20800 to 19800 (delta: -1000)
+2025-03-25 19:11:51,829 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:11:54,989 - INFO - User 1151644112454439023: Balance changed from 19800 to 18800 (delta: -1000)
+2025-03-25 19:11:54,990 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:11:58,831 - INFO - User 1151644112454439023: Balance changed from 18800 to 17800 (delta: -1000)
+2025-03-25 19:11:58,831 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:12:07,461 - INFO - User 1151644112454439023: Balance changed from 17800 to 16800 (delta: -1000)
+2025-03-25 19:12:07,462 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:12:12,393 - INFO - User 1151644112454439023: Balance changed from 16800 to 19800 (delta: 3000)
+2025-03-25 19:12:12,393 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:12:17,543 - INFO - User 1151644112454439023: Balance changed from 19800 to 18800 (delta: -1000)
+2025-03-25 19:12:17,543 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:12:22,567 - INFO - User 1151644112454439023: Balance changed from 18800 to 17800 (delta: -1000)
+2025-03-25 19:12:22,567 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:12:25,825 - INFO - User 1151644112454439023: Balance changed from 17800 to 20800 (delta: 3000)
+2025-03-25 19:12:25,825 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:12:56,388 - INFO - User 1151644112454439023: Balance changed from 20800 to 19800 (delta: -1000)
+2025-03-25 19:12:56,388 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:12:59,695 - INFO - User 1151644112454439023: Balance changed from 19800 to 22800 (delta: 3000)
+2025-03-25 19:12:59,695 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:13:03,089 - INFO - User 1151644112454439023: Balance changed from 22800 to 25800 (delta: 3000)
+2025-03-25 19:13:03,090 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:13:05,422 - INFO - User 1151644112454439023: Balance changed from 25800 to 40800 (delta: 15000)
+2025-03-25 19:13:05,423 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:13:31,433 - INFO - User 1151644112454439023: Balance changed from 40800 to 35800 (delta: -5000)
+2025-03-25 19:13:31,434 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:13:45,207 - INFO - User 1151644112454439023: Balance changed from 35800 to 50800 (delta: 15000)
+2025-03-25 19:13:45,208 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:13:47,759 - INFO - User 1151644112454439023: Balance changed from 50800 to 65800 (delta: 15000)
+2025-03-25 19:13:47,759 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:13:50,481 - INFO - User 1151644112454439023: Balance changed from 65800 to 60800 (delta: -5000)
+2025-03-25 19:13:50,482 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:13:53,545 - INFO - User 1151644112454439023: Balance changed from 60800 to 55800 (delta: -5000)
+2025-03-25 19:13:53,546 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:13:56,606 - INFO - User 1151644112454439023: Balance changed from 55800 to 50800 (delta: -5000)
+2025-03-25 19:13:56,606 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:13:59,518 - INFO - User 1151644112454439023: Balance changed from 50800 to 45800 (delta: -5000)
+2025-03-25 19:13:59,519 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:14:02,678 - INFO - User 1151644112454439023: Balance changed from 45800 to 60800 (delta: 15000)
+2025-03-25 19:14:02,678 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:14:05,757 - INFO - User 1151644112454439023: Balance changed from 60800 to 75800 (delta: 15000)
+2025-03-25 19:14:05,757 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:14:54,350 - INFO - User 1151644112454439023: Balance changed from 75800 to 65800 (delta: -10000)
+2025-03-25 19:14:54,350 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:14:57,616 - INFO - User 1151644112454439023: Balance changed from 65800 to 55800 (delta: -10000)
+2025-03-25 19:14:57,617 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:15:00,650 - INFO - User 1151644112454439023: Balance changed from 55800 to 45800 (delta: -10000)
+2025-03-25 19:15:00,651 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:15:03,949 - INFO - User 1151644112454439023: Balance changed from 45800 to 75800 (delta: 30000)
+2025-03-25 19:15:03,950 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:15:07,742 - INFO - User 1151644112454439023: Balance changed from 75800 to 65800 (delta: -10000)
+2025-03-25 19:15:07,742 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:15:10,787 - INFO - User 1151644112454439023: Balance changed from 65800 to 55800 (delta: -10000)
+2025-03-25 19:15:10,787 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:15:15,430 - INFO - User 1151644112454439023: Balance changed from 55800 to 85800 (delta: 30000)
+2025-03-25 19:15:15,430 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:15:19,107 - INFO - User 1151644112454439023: Balance changed from 85800 to 115800 (delta: 30000)
+2025-03-25 19:15:19,108 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:15:32,756 - INFO - User 1151644112454439023: Balance changed from 115800 to 110800 (delta: -5000)
+2025-03-25 19:15:32,756 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:15:32,757 - INFO - Successfully saved 6 tickets to lottery.txt
+2025-03-25 19:15:35,913 - INFO - User 1151644112454439023: Balance changed from 110800 to 105800 (delta: -5000)
+2025-03-25 19:15:35,913 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:15:35,914 - INFO - Successfully saved 7 tickets to lottery.txt
+2025-03-25 19:15:45,602 - INFO - User 1151644112454439023: Balance changed from 105800 to 100800 (delta: -5000)
+2025-03-25 19:15:45,602 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:15:45,603 - INFO - Successfully saved 8 tickets to lottery.txt
+2025-03-25 19:15:48,233 - INFO - User 1151644112454439023: Balance changed from 100800 to 95800 (delta: -5000)
+2025-03-25 19:15:48,234 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:15:48,234 - INFO - Successfully saved 9 tickets to lottery.txt
+2025-03-25 19:15:50,585 - INFO - User 1151644112454439023: Balance changed from 95800 to 90800 (delta: -5000)
+2025-03-25 19:15:50,586 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:15:50,586 - INFO - Successfully saved 10 tickets to lottery.txt
+2025-03-25 19:15:52,681 - INFO - User 1151644112454439023: Balance changed from 90800 to 85800 (delta: -5000)
+2025-03-25 19:15:52,682 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:15:52,682 - INFO - Successfully saved 11 tickets to lottery.txt
+2025-03-25 19:15:55,396 - INFO - User 1151644112454439023: Balance changed from 85800 to 80800 (delta: -5000)
+2025-03-25 19:15:55,396 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:15:55,397 - INFO - Successfully saved 12 tickets to lottery.txt
+2025-03-25 19:15:57,770 - INFO - User 1151644112454439023: Balance changed from 80800 to 75800 (delta: -5000)
+2025-03-25 19:15:57,770 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:15:57,771 - INFO - Successfully saved 13 tickets to lottery.txt
+2025-03-25 19:16:00,314 - INFO - User 1151644112454439023: Balance changed from 75800 to 70800 (delta: -5000)
+2025-03-25 19:16:00,315 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:16:00,315 - INFO - Successfully saved 14 tickets to lottery.txt
+2025-03-25 19:16:02,636 - INFO - User 1151644112454439023: Balance changed from 70800 to 65800 (delta: -5000)
+2025-03-25 19:16:02,637 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:16:02,637 - INFO - Successfully saved 15 tickets to lottery.txt
+2025-03-25 19:16:04,755 - INFO - User 1151644112454439023: Balance changed from 65800 to 60800 (delta: -5000)
+2025-03-25 19:16:04,756 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:16:04,756 - INFO - Successfully saved 16 tickets to lottery.txt
+2025-03-25 19:16:07,025 - INFO - User 1151644112454439023: Balance changed from 60800 to 55800 (delta: -5000)
+2025-03-25 19:16:07,025 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:16:07,026 - INFO - Successfully saved 17 tickets to lottery.txt
+2025-03-25 19:16:11,601 - INFO - User 1151644112454439023: Balance changed from 55800 to 50800 (delta: -5000)
+2025-03-25 19:16:11,602 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:16:11,602 - INFO - Successfully saved 18 tickets to lottery.txt
+2025-03-25 19:16:14,978 - INFO - User 1151644112454439023: Balance changed from 50800 to 45800 (delta: -5000)
+2025-03-25 19:16:14,978 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:16:14,979 - INFO - Successfully saved 19 tickets to lottery.txt
+2025-03-25 19:16:17,379 - INFO - User 1151644112454439023: Balance changed from 45800 to 40800 (delta: -5000)
+2025-03-25 19:16:17,380 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:16:17,380 - INFO - Successfully saved 20 tickets to lottery.txt
+2025-03-25 19:16:19,516 - INFO - User 1151644112454439023: Balance changed from 40800 to 35800 (delta: -5000)
+2025-03-25 19:16:19,517 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:16:19,517 - INFO - Successfully saved 21 tickets to lottery.txt
+2025-03-25 19:16:21,698 - INFO - User 1151644112454439023: Balance changed from 35800 to 30800 (delta: -5000)
+2025-03-25 19:16:21,699 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:16:21,699 - INFO - Successfully saved 22 tickets to lottery.txt
+2025-03-25 19:16:23,866 - INFO - User 1151644112454439023: Balance changed from 30800 to 25800 (delta: -5000)
+2025-03-25 19:16:23,867 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:16:23,867 - INFO - Successfully saved 23 tickets to lottery.txt
+2025-03-25 19:16:26,010 - INFO - User 1151644112454439023: Balance changed from 25800 to 20800 (delta: -5000)
+2025-03-25 19:16:26,010 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:16:26,010 - INFO - Successfully saved 24 tickets to lottery.txt
+2025-03-25 19:16:28,161 - INFO - User 1151644112454439023: Balance changed from 20800 to 15800 (delta: -5000)
+2025-03-25 19:16:28,162 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:16:28,162 - INFO - Successfully saved 25 tickets to lottery.txt
+2025-03-25 19:16:30,381 - INFO - User 1151644112454439023: Balance changed from 15800 to 10800 (delta: -5000)
+2025-03-25 19:16:30,381 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:16:30,382 - INFO - Successfully saved 26 tickets to lottery.txt
+2025-03-25 19:16:46,610 - INFO - User 1151644112454439023: Balance changed from 10800 to 9800 (delta: -1000)
+2025-03-25 19:16:46,610 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:16:49,458 - INFO - User 1151644112454439023: Balance changed from 9800 to 8800 (delta: -1000)
+2025-03-25 19:16:49,458 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:16:52,692 - INFO - User 1151644112454439023: Balance changed from 8800 to 7800 (delta: -1000)
+2025-03-25 19:16:52,692 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:16:55,657 - INFO - User 1151644112454439023: Balance changed from 7800 to 6800 (delta: -1000)
+2025-03-25 19:16:55,658 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:16:58,756 - INFO - User 1151644112454439023: Balance changed from 6800 to 9800 (delta: 3000)
+2025-03-25 19:16:58,756 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:17:01,754 - INFO - User 1151644112454439023: Balance changed from 9800 to 8800 (delta: -1000)
+2025-03-25 19:17:01,755 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:17:04,590 - INFO - User 1151644112454439023: Balance changed from 8800 to 11800 (delta: 3000)
+2025-03-25 19:17:04,590 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:17:07,935 - INFO - User 1151644112454439023: Balance changed from 11800 to 14800 (delta: 3000)
+2025-03-25 19:17:07,935 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:17:10,820 - INFO - User 1151644112454439023: Balance changed from 14800 to 17800 (delta: 3000)
+2025-03-25 19:17:10,821 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:17:15,829 - INFO - User 1151644112454439023: Balance changed from 17800 to 16800 (delta: -1000)
+2025-03-25 19:17:15,829 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:17:18,955 - INFO - User 1151644112454439023: Balance changed from 16800 to 15800 (delta: -1000)
+2025-03-25 19:17:18,956 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:17:22,305 - INFO - User 1151644112454439023: Balance changed from 15800 to 14800 (delta: -1000)
+2025-03-25 19:17:22,306 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:17:29,790 - INFO - User 1151644112454439023: Balance changed from 14800 to 17800 (delta: 3000)
+2025-03-25 19:17:29,791 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:17:38,796 - INFO - User 1151644112454439023: Balance changed from 17800 to 16800 (delta: -1000)
+2025-03-25 19:17:38,796 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:17:42,268 - INFO - User 1151644112454439023: Balance changed from 16800 to 15800 (delta: -1000)
+2025-03-25 19:17:42,269 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:17:45,011 - INFO - User 1151644112454439023: Balance changed from 15800 to 14800 (delta: -1000)
+2025-03-25 19:17:45,011 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:17:48,499 - INFO - User 1151644112454439023: Balance changed from 14800 to 13800 (delta: -1000)
+2025-03-25 19:17:48,499 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:17:51,318 - INFO - User 1151644112454439023: Balance changed from 13800 to 12800 (delta: -1000)
+2025-03-25 19:17:51,319 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:17:54,616 - INFO - User 1151644112454439023: Balance changed from 12800 to 11800 (delta: -1000)
+2025-03-25 19:17:54,617 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:17:58,096 - INFO - User 1151644112454439023: Balance changed from 11800 to 14800 (delta: 3000)
+2025-03-25 19:17:58,097 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:18:01,834 - INFO - User 1151644112454439023: Balance changed from 14800 to 17800 (delta: 3000)
+2025-03-25 19:18:01,834 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:18:06,205 - INFO - User 1151644112454439023: Balance changed from 17800 to 20800 (delta: 3000)
+2025-03-25 19:18:06,206 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:18:10,170 - INFO - User 1151644112454439023: Balance changed from 20800 to 19800 (delta: -1000)
+2025-03-25 19:18:10,171 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:18:13,311 - INFO - User 1151644112454439023: Balance changed from 19800 to 18800 (delta: -1000)
+2025-03-25 19:18:13,311 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:18:16,614 - INFO - User 1151644112454439023: Balance changed from 18800 to 21800 (delta: 3000)
+2025-03-25 19:18:16,614 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:18:36,803 - INFO - User 1151644112454439023: Balance changed from 21800 to 33800 (delta: 12000)
+2025-03-25 19:18:36,804 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:18:39,377 - INFO - User 1151644112454439023: Balance changed from 33800 to 45800 (delta: 12000)
+2025-03-25 19:18:39,378 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:18:41,342 - INFO - User 1151644112454439023: Balance changed from 45800 to 41800 (delta: -4000)
+2025-03-25 19:18:41,342 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:18:43,615 - INFO - User 1151644112454439023: Balance changed from 41800 to 53800 (delta: 12000)
+2025-03-25 19:18:43,616 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:18:46,567 - INFO - User 1151644112454439023: Balance changed from 53800 to 49800 (delta: -4000)
+2025-03-25 19:18:46,568 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:18:49,378 - INFO - User 1151644112454439023: Balance changed from 49800 to 45800 (delta: -4000)
+2025-03-25 19:18:49,378 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:18:52,697 - INFO - User 1151644112454439023: Balance changed from 45800 to 57800 (delta: 12000)
+2025-03-25 19:18:52,697 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:19:07,883 - INFO - User 1151644112454439023: Balance changed from 57800 to 87800 (delta: 30000)
+2025-03-25 19:19:07,883 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:19:11,047 - INFO - User 1151644112454439023: Balance changed from 87800 to 117800 (delta: 30000)
+2025-03-25 19:19:11,047 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:19:17,199 - INFO - User 1151644112454439023: Balance changed from 117800 to 107800 (delta: -10000)
+2025-03-25 19:19:17,199 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:19:18,790 - INFO - User 1151644112454439023: Balance changed from 107800 to 97800 (delta: -10000)
+2025-03-25 19:19:18,791 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:19:21,219 - INFO - User 1151644112454439023: Balance changed from 97800 to 87800 (delta: -10000)
+2025-03-25 19:19:21,219 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:19:24,134 - INFO - User 1151644112454439023: Balance changed from 87800 to 77800 (delta: -10000)
+2025-03-25 19:19:24,135 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:19:27,005 - INFO - User 1151644112454439023: Balance changed from 77800 to 107800 (delta: 30000)
+2025-03-25 19:19:27,006 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:19:30,885 - INFO - User 1151644112454439023: Balance changed from 107800 to 97800 (delta: -10000)
+2025-03-25 19:19:30,885 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:21:04,577 - INFO - User 1151644112454439023: Balance changed from 97800 to 127800 (delta: 30000)
+2025-03-25 19:21:04,578 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:21:10,323 - INFO - User 1151644112454439023: Balance changed from 127800 to 157800 (delta: 30000)
+2025-03-25 19:21:10,324 - INFO - Successfully saved 2 users to money.txt

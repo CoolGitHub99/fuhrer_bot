@@ -347,12 +347,12 @@ async def fuhrerslotmachine(interaction: discord.Interaction, bet: int):
 
     await interaction.response.send_message(result_message)
 
-@tree.command(name="fuhrerlotteryticket", description="Purchase a lottery ticket for $5000.")
+@tree.command(name="fuhrerlotteryticket", description="Purchase a lottery ticket for $10000.")
 async def fuhrerlotteryticket(interaction: discord.Interaction):
     balance = Money.get_balance(interaction.user.id)
 
-    if balance >= 5000:
-        Money.update_balance(interaction.user.id, -5000)
+    if balance >= 10000:
+        Money.update_balance(interaction.user.id, -10000)
         ticket = Lottery.add_ticket(interaction.user.id)
         await interaction.response.send_message(f"🎟️ Successfully purchased a lottery ticket! Lottery ID: {ticket}. Remaining Balance: {Money.get_balance(interaction.user.id)}")
     else:
