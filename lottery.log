@@ -562,3 +562,13 @@ discord.app_commands.errors.CommandInvokeError: Command 'runlottery' raised an e
 2025-03-25 19:21:04,578 - INFO - Successfully saved 2 users to money.txt
 2025-03-25 19:21:10,323 - INFO - User 1151644112454439023: Balance changed from 127800 to 157800 (delta: 30000)
 2025-03-25 19:21:10,324 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:23:43,952 - ERROR - Error loading tickets: [WinError 3] The system cannot find the path specified: ''
+2025-03-25 19:23:43,953 - ERROR - Error loading users: [WinError 3] The system cannot find the path specified: ''
+2025-03-25 19:23:43,954 - INFO - logging in using static token
+2025-03-25 19:23:45,874 - INFO - Shard ID None has connected to Gateway (Session ID: f0b19876bd9326ba7a29488510fac376).
+2025-03-25 19:24:43,450 - INFO - Added new user 701932525551091743 with default balance 200
+2025-03-25 19:24:43,451 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:27:06,421 - INFO - Added new user 1151644112454439023 with default balance 200
+2025-03-25 19:27:06,421 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:30:46,602 - INFO - User 1151644112454439023: Balance changed from 200 to 199 (delta: -1)
+2025-03-25 19:30:46,602 - INFO - Successfully saved 2 users to money.txt
