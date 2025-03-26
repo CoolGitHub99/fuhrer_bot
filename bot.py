@@ -3,6 +3,7 @@ import discord
 from discord import app_commands
 import random
 import json
+import logging
 
 from dotenv import load_dotenv
 
@@ -38,85 +39,142 @@ tree = app_commands.CommandTree(client)
 class LotteryManager:
     def __init__(self, filename='lottery.txt'):
         self.filename = filename
-        self.tickets = self.load_tickets()
+        # Set up logging
+        logging.basicConfig(level=logging.INFO, 
+                            format='%(asctime)s - %(levelname)s - %(message)s',
+                            filename='lottery.log')
+        self.users = self.load_tickets()
 
     def load_tickets(self):
-        if not os.path.exists(self.filename):
-            with open(self.filename, 'w') as f:
-                json.dump({}, f)
+        try:
+            os.makedirs(os.path.dirname(self.filename), exist_ok=True)
+            
+            if not os.path.exists(self.filename):
+                with open(self.filename, 'w') as f:
+                    json.dump({}, f)
+                logging.info(f"Created new {self.filename}")
+                return {}
+
+            # Read the file
+            with open(self.filename, 'r') as f:
+                data = json.load(f)
+                logging.info(f"Loaded {len(data)} tickets from {self.filename}")
+                return data
+
+        except (json.JSONDecodeError, IOError) as e:
+            logging.error(f"Error loading tickets: {e}")
             return {}
 
-        try:
-            with open(self.filename, 'r') as f:
-                return json.load(f)
-        except (json.JSONDecodeError, FileNotFoundError):
-            return {}
-        
     def add_ticket(self, user_id):
-        ticketnumber = random.randrange(1,100000000)
+        ticketnumber = str(random.randrange(1,100000000))
         self.users[str(ticketnumber)] = user_id
         self.save_tickets()
         return ticketnumber
 
     def save_tickets(self):
-        with open(self.filename, 'w') as f:
-            json.dump(self.users, f, indent=4)
+        try:
+            users_copy = self.users.copy()
+            
+            with open(self.filename, 'w') as f:
+                json.dump(users_copy, f, indent=4)
+            
+            logging.info(f"Successfully saved {len(users_copy)} tickets to {self.filename}")
+        except IOError as e:
+            logging.error(f"Error saving tickets: {e}")
 
     def clear_data(self):
         self.users = {}
         self.save_tickets()
+        logging.warning("All lottery tickets cleared")
 
     def pick_ticket(self):
-        picked = random.choice(self.users)
+        if not self.users:
+            logging.warning("No tickets in the lottery")
+            return None
+        
+        picked = random.choice(list(self.users.values()))
         self.clear_data()
         return picked
-    
 Lottery = LotteryManager()
+
 
 class MoneyManager:
     def __init__(self, filename='money.txt', default_balance=200):
         self.filename = filename
         self.default_balance = default_balance
+        logging.basicConfig(level=logging.INFO, 
+                            format='%(asctime)s - %(levelname)s - %(message)s',
+                            filename='money_manager.log')
         self.users = self.load_users()
 
     def load_users(self):
-        if not os.path.exists(self.filename):
-            with open(self.filename, 'w') as f:
-                json.dump({}, f)
-            return {}
-
         try:
+            os.makedirs(os.path.dirname(self.filename), exist_ok=True)
+            
+            if not os.path.exists(self.filename):
+                with open(self.filename, 'w') as f:
+                    json.dump({}, f)
+                logging.info(f"Created new {self.filename}")
+                return {}
+
             with open(self.filename, 'r') as f:
-                return json.load(f)
-        except (json.JSONDecodeError, FileNotFoundError):
+                data = json.load(f)
+                logging.info(f"Loaded {len(data)} users from {self.filename}")
+                return data
+
+        except (json.JSONDecodeError, IOError) as e:
+            logging.error(f"Error loading users: {e}")
             return {}
 
     def add_user(self, user_id):
-        self.users[str(user_id)] = self.default_balance
-        self.save_users()
+        user_id = str(user_id)
+        if user_id not in self.users:
+            self.users[user_id] = self.default_balance
+            logging.info(f"Added new user {user_id} with default balance {self.default_balance}")
+            self.save_users()
 
     def get_balance(self, user_id):
-        return self.users.get(str(user_id), self.default_balance)
+        user_id = str(user_id)
+        if user_id not in self.users:
+            self.add_user(user_id)
+        
+        return self.users.get(user_id, self.default_balance)
 
     def update_balance(self, user_id, amount):
         user_id = str(user_id)
-
+        
         if user_id not in self.users:
             self.add_user(user_id)
         
         current_balance = self.users[user_id]
         new_balance = current_balance + amount
-
+        
         if new_balance <= 0:
             new_balance = self.default_balance
         
         self.users[user_id] = new_balance
+        
+        logging.info(f"User {user_id}: Balance changed from {current_balance} to {new_balance} (delta: {amount})")
+        
         self.save_users()
+        
         return new_balance
 
     def save_users(self):
-        with open(self.filename, 'w') as f:
-            json.dump(self.users, f, indent=4)
+        try:
+            users_copy = self.users.copy()
+            
+            with open(self.filename, 'w') as f:
+                json.dump(users_copy, f, indent=4)
+            
+            logging.info(f"Successfully saved {len(users_copy)} users to {self.filename}")
+        except IOError as e:
+            logging.error(f"Error saving users: {e}")
+
+    def clear_data(self):
+        self.users = {}
+        self.save_users()
+        logging.warning("All user data cleared")
 
 Money = MoneyManager()
 
