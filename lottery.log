@@ -45,3 +45,28 @@ Traceback (most recent call last):
   File "C:\Users\owenc\AppData\Roaming\Python\Python312\site-packages\discord\app_commands\commands.py", line 876, in _do_call
     raise CommandInvokeError(self, e) from e
 discord.app_commands.errors.CommandInvokeError: Command 'fuhrerlotteryticket' raised an exception: NotFound: 404 Not Found (error code: 10015): Unknown Webhook
+2025-03-25 18:48:34,736 - ERROR - Error loading tickets: [WinError 3] The system cannot find the path specified: ''
+2025-03-25 18:48:34,736 - ERROR - Error loading users: [WinError 3] The system cannot find the path specified: ''
+2025-03-25 18:48:34,737 - INFO - logging in using static token
+2025-03-25 18:48:35,641 - INFO - Shard ID None has connected to Gateway (Session ID: f955ce09ce32d58b75ab85a0c47a66a4).
+2025-03-25 18:49:18,835 - INFO - Added new user 701932525551091743 with default balance 200
+2025-03-25 18:49:18,835 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:49:32,662 - INFO - User 701932525551091743: Balance changed from 200 to 200 (delta: -200)
+2025-03-25 18:49:32,663 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:49:34,188 - INFO - User 701932525551091743: Balance changed from 200 to 200 (delta: -200)
+2025-03-25 18:49:34,189 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:49:35,374 - INFO - User 701932525551091743: Balance changed from 200 to 200 (delta: -200)
+2025-03-25 18:49:35,375 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:49:38,756 - INFO - User 701932525551091743: Balance changed from 200 to 800 (delta: 600)
+2025-03-25 18:49:38,756 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:49:52,818 - INFO - User 701932525551091743: Balance changed from 800 to 3800 (delta: 3000)
+2025-03-25 18:49:52,819 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:49:57,356 - INFO - User 701932525551091743: Balance changed from 3800 to 4400 (delta: 600)
+2025-03-25 18:49:57,357 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:49:59,096 - INFO - User 701932525551091743: Balance changed from 4400 to 5000 (delta: 600)
+2025-03-25 18:49:59,097 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:50:07,416 - INFO - User 701932525551091743: Balance changed from 5000 to 200 (delta: -5000)
+2025-03-25 18:50:07,417 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 18:50:07,417 - INFO - Successfully saved 1 tickets to lottery.txt
+2025-03-25 18:50:17,816 - INFO - Successfully saved 0 tickets to lottery.txt
+2025-03-25 18:50:17,816 - WARNING - All lottery tickets cleared

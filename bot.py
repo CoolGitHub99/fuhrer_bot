@@ -368,11 +368,11 @@ async def runlottery(interaction: discord.Interaction):
     owner_id = 701932525551091743
 
     if interaction.user.id != owner_id:
-        await interaction.response.send_message("❌ You do not have permission to run the lottery.", ephemeral=True)
+        await interaction.response.send_message("❌ NIGGER.", ephemeral=True)
         return
 
     picked = Lottery.pick_ticket()
-    await interaction.response.send_message(f"🎉 {picked} has won the lottery! @everyone")
+    await interaction.response.send_message(f"🎉 {interaction.guild.get_member(picked).mention} has won the lottery! @everyone")
 
 
 #turning him on :)
