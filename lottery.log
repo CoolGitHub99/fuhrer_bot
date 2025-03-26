@@ -775,3 +775,14 @@ Traceback (most recent call last):
     raise CommandInvokeError(self, e) from e
 discord.app_commands.errors.CommandInvokeError: Command 'runlottery' raised an exception: HTTPException: 400 Bad Request (error code: 50035): Invalid Form Body
 In user_id: Value "None" is not snowflake.
+2025-03-25 19:41:12,788 - ERROR - Error loading tickets: [WinError 3] The system cannot find the path specified: ''
+2025-03-25 19:41:12,788 - ERROR - Error loading users: [WinError 3] The system cannot find the path specified: ''
+2025-03-25 19:41:12,790 - INFO - logging in using static token
+2025-03-25 19:41:13,795 - INFO - Shard ID None has connected to Gateway (Session ID: 0fab2dc71e2d9317a654cbd7e42b5a51).
+2025-03-25 19:47:43,075 - WARNING - No tickets in the lottery
+2025-03-25 19:48:01,488 - INFO - Added new user 701932525551091743 with default balance 200
+2025-03-25 19:48:01,489 - INFO - Successfully saved 1 users to money.txt
+2025-03-25 19:50:36,524 - INFO - Added new user 729158162279563275 with default balance 200
+2025-03-25 19:50:36,524 - INFO - Successfully saved 2 users to money.txt
+2025-03-25 19:50:36,823 - INFO - User 729158162279563275: Balance changed from 200 to 200 (delta: -200)
+2025-03-25 19:50:36,824 - INFO - Successfully saved 2 users to money.txt
