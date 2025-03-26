@@ -4,6 +4,8 @@ from discord import app_commands
 import random
 import json
 import logging
+import shutil
+import atexit
 
 from dotenv import load_dotenv
 
@@ -38,31 +40,20 @@ tree = app_commands.CommandTree(client)
 #Json
 class LotteryManager:
     def __init__(self, filename='lottery.txt'):
-        self.filename = filename
-        # Set up logging
-        logging.basicConfig(level=logging.INFO, 
-                            format='%(asctime)s - %(levelname)s - %(message)s',
-                            filename='lottery.log')
+        self.filename = os.path.join(os.getcwd(), filename)
         self.users = self.load_tickets()
+        atexit.register(self.save_tickets)
 
     def load_tickets(self):
         try:
-            os.makedirs(os.path.dirname(self.filename), exist_ok=True)
-            
             if not os.path.exists(self.filename):
-                with open(self.filename, 'w') as f:
-                    json.dump({}, f)
-                logging.info(f"Created new {self.filename}")
                 return {}
 
-            # Read the file
             with open(self.filename, 'r') as f:
-                data = json.load(f)
-                logging.info(f"Loaded {len(data)} tickets from {self.filename}")
-                return data
+                return json.load(f)
 
         except (json.JSONDecodeError, IOError) as e:
-            logging.error(f"Error loading tickets: {e}")
+            logging.error(f"Error loading tickets: {e}. Resetting file.")
             return {}
 
     def add_ticket(self, user_id):
@@ -73,12 +64,13 @@ class LotteryManager:
 
     def save_tickets(self):
         try:
-            users_copy = self.users.copy()
+            temp_filename = self.filename + ".tmp"
             
-            with open(self.filename, 'w') as f:
-                json.dump(users_copy, f, indent=4)
+            with open(temp_filename, 'w') as f:
+                json.dump(self.users, f, indent=4)
             
-            logging.info(f"Successfully saved {len(users_copy)} tickets to {self.filename}")
+            shutil.move(temp_filename, self.filename)  # Atomically replace file
+            logging.info(f"Successfully saved {len(self.users)} tickets to {self.filename}")
         except IOError as e:
             logging.error(f"Error saving tickets: {e}")
 
