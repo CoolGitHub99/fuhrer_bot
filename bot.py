@@ -318,63 +318,61 @@ async def fuhrerroulletewheel(
         await interaction.followup.send(f"An error occurred: {str(e)}", ephemeral=True)
 
 
-slots = [
-    "🍒",
-    "🍋",
-    "🍊",
-    "🍇",
-    "🔔",
-    "🏴‍☠️",
-    "7️⃣",
-]
+slots = ["🍒", "🍋", "🍊", "🍉", "🍇", "⭐", "💎"] 
 
-@tree.command(name="fuhrerslotmachine", description="Slot machine to gamble gamble credit card money")
+@tree.command(name="fuhrerslotmachine", description="Slot machine to gamble your money.")
 async def fuhrerslotmachine(interaction: discord.Interaction, bet: int):
     if bet <= 0:
         await interaction.response.send_message("Bet amount must be a positive integer. ❌", ephemeral=True)
         return 
 
-    if bet > Money.get_balance(interaction.user.id):
-        await interaction.response.send_message(f"You don't have enough money for this bet! ❌ You Have: {Money.get_balance(interaction.user.id)}" , ephemeral=True)
-        return 
+    balance = Money.get_balance(interaction.user.id)
     
+    if bet > balance:
+        await interaction.response.send_message(f"You don't have enough money for this bet! ❌ You have: {balance}", ephemeral=True)
+        return 
+
     slot1 = random.choice(slots)
     slot2 = random.choice(slots)
     slot3 = random.choice(slots)
 
-    await interaction.response.send_message(f"The slots were {slot1}{slot2}{slot3}!")
-
-    if slot1 == slot2 and slot2 == slot3:
+    result_message = f"The slots were {slot1}{slot2}{slot3}!"
+    
+    if slot1 == slot2 == slot3:
         winnings = bet * 15
         Money.update_balance(interaction.user.id, winnings)
-        await interaction.followup.send(f"JACKPOT! You got all three slots! ✅✅✅ You won {winnings} dollars. New balance: {Money.get_balance(interaction.user.id)}")
+        result_message += f"\n🎉 JACKPOT! ✅✅✅ You won {winnings} dollars. New balance: {Money.get_balance(interaction.user.id)}"
     elif slot1 == slot2 or slot2 == slot3 or slot1 == slot3:
         winnings = bet * 3
         Money.update_balance(interaction.user.id, winnings)
-        await interaction.followup.send(f"Two slots were correct! ✅ You won {winnings} dollars. New balance: {Money.get_balance(interaction.user.id)}")
+        result_message += f"\n✅ Two slots matched! You won {winnings} dollars. New balance: {Money.get_balance(interaction.user.id)}"
     else:
         Money.update_balance(interaction.user.id, -bet)
-        await interaction.followup.send(f"Your slots were incorrect. ❌ You lost {bet} dollars. New balance: {Money.get_balance(interaction.user.id)}")
+        result_message += f"\n❌ You lost {bet} dollars. New balance: {Money.get_balance(interaction.user.id)}"
 
-#lottery
-@tree.command(name="fuhrerlotteryticket", description="purhcase lottery ticket for $5000")
+    await interaction.response.send_message(result_message)
+
+@tree.command(name="fuhrerlotteryticket", description="Purchase a lottery ticket for $5000.")
 async def fuhrerlotteryticket(interaction: discord.Interaction):
-    if int(Money.get_balance(interaction.user.id)) >= 5000:
+    balance = Money.get_balance(interaction.user.id)
+
+    if balance >= 5000:
         Money.update_balance(interaction.user.id, -5000)
         ticket = Lottery.add_ticket(interaction.user.id)
-        interaction.response.send_message(f"Successfully Purchased a lottery ticket! lottery id: {ticket}. Remaining Balance: {Money.get_balance(interaction.user.id)}")
+        await interaction.response.send_message(f"🎟️ Successfully purchased a lottery ticket! Lottery ID: {ticket}. Remaining Balance: {Money.get_balance(interaction.user.id)}")
     else:
-        await interaction.followup.send(f"You do not have enough money for a lottery ticked. ❌ Current balance: {Money.get_balance(interaction.user.id)}")
+        await interaction.response.send_message(f"You do not have enough money for a lottery ticket. ❌ Current balance: {balance}", ephemeral=True)
 
-@tree.command(name="runlottery", description="only owner can do")
+@tree.command(name="runlottery", description="Only the bot owner can run this command.")
 async def runlottery(interaction: discord.Interaction):
-    if int(interaction.user.id ) != 701932525551091743:
-        await interaction.followup.send(f"NIGGER. ❌")
-        return
-    else:
-        picked = Lottery.pick_ticket()
-        await interaction.response.send_message(f"{picked} has won the lottery! @everyone")
+    owner_id = 701932525551091743
 
+    if interaction.user.id != owner_id:
+        await interaction.response.send_message("❌ You do not have permission to run the lottery.", ephemeral=True)
+        return
+
+    picked = Lottery.pick_ticket()
+    await interaction.response.send_message(f"🎉 {picked} has won the lottery! @everyone")
 
 
 #turning him on :)
