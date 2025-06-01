@@ -12,3 +12,6 @@
 2025-05-31 17:22:49,399 - ERROR - Error loading users: [WinError 3] The system cannot find the path specified: ''
 2025-05-31 17:22:49,401 - INFO - logging in using static token
 2025-05-31 17:22:50,167 - INFO - Shard ID None has connected to Gateway (Session ID: 69d17f82fb4d258816bc55328bf4248c).
+2025-05-31 17:25:06,625 - ERROR - Error loading users: [WinError 3] The system cannot find the path specified: ''
+2025-05-31 17:25:06,627 - INFO - logging in using static token
+2025-05-31 17:25:07,327 - INFO - Shard ID None has connected to Gateway (Session ID: f89ecc578be26ae80e16ae15de75e706).

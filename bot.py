@@ -186,7 +186,8 @@ async def fuhrerrole(interaction: discord.Interaction, member: discord.Member, r
         ##return
     
     try:
-        await member.edit(roles=[interaction.guild.default_role])
+        if role.name != "Admin":
+            await member.edit(roles=[interaction.guild.default_role])
         
         await member.add_roles(role)
         
