@@ -9,3 +9,6 @@
 2025-03-25 20:35:52,852 - INFO - Successfully saved 2 users to money.txt
 2025-03-25 20:35:54,771 - INFO - User 701932525551091743: Balance changed from 800 to 600 (delta: -200)
 2025-03-25 20:35:54,771 - INFO - Successfully saved 2 users to money.txt
+2025-05-31 17:22:49,399 - ERROR - Error loading users: [WinError 3] The system cannot find the path specified: ''
+2025-05-31 17:22:49,401 - INFO - logging in using static token
+2025-05-31 17:22:50,167 - INFO - Shard ID None has connected to Gateway (Session ID: 69d17f82fb4d258816bc55328bf4248c).

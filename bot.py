@@ -181,9 +181,9 @@ async def fuhrermoney(interaction: discord.Interaction, member: discord.Member):
     role="The role you want to assign"
 )
 async def fuhrerrole(interaction: discord.Interaction, member: discord.Member, role: discord.Role):
-    if not interaction.user.guild_permissions.manage_roles:
-        await interaction.response.send_message("You don't have permission to manage roles.", ephemeral=True)
-        return
+    ##if not interaction.user.guild_permissions.manage_roles:
+        ##await interaction.response.send_message("You don't have permission to manage roles.", ephemeral=True)
+        ##return
     
     try:
         await member.edit(roles=[interaction.guild.default_role])
